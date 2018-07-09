@@ -1,0 +1,561 @@
+* {
+	border-collapse:collapse;
+}
+html{
+	min-width:960px;
+	height:100%;
+	padding:0px;
+	margin:0px;
+}
+body{
+	width:100%;
+	height:100%;
+	padding:0px;
+	margin:0px;
+	background:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+}
+a{
+	color:#0084BD;
+}
+img{border:none;}
+.center{text-align:center;}
+.headerSortDown b{
+	background:url("images/up-down.png") no-repeat scroll 0 1px transparent;
+	padding-left: 19px;
+}
+.headerSortUp b{
+	background:url("images/up-down.png") no-repeat scroll 0 -12px transparent;
+	padding-left: 19px;
+}
+.block_title{
+	color:#2D2D2D;
+	font-size:25px;
+	font-weight:bold;
+}
+.block_title span{
+	float:left;
+	display:block;
+	margin-right:20px;
+	margin-bottom:10px;
+	line-height:15px;
+}
+.block_title .tools{
+	margin-bottom:3px;
+}
+
+#header {
+	width:100%;
+	background:#333333;
+	overflow: auto;
+}
+#header_name{
+	width:100%;
+	overflow:hidden;
+	border-bottom:1px solid #000;
+	float:left;
+}
+#header_name_title{
+	float:left;
+	color:#FFF;
+	font-size:15px;
+	padding:5px;
+}
+#header_name_title a{
+	color:#29ABE2; 57CDFF
+}
+#header_name_title a:hover{
+	color:#57CDFF; 
+}
+#header_name_title span{
+	color:#808080;
+	font-size:12px;
+}
+#header_menu{
+	width:100%;
+	overflow:hidden;
+	border-top:1px solid #6E6E6E;
+	border-bottom:1px solid #000;
+}
+#dinix_logo{
+	display:block;
+	width:84px;
+	height:40px;
+	background:url(images/dinix_logo.png) no-repeat center center;
+	float:left;
+	border-right:1px solid #000;
+}
+#header_menu ul{
+	padding:0px;
+	margin:0px;
+	position:absolute;
+	margin-left:85px;
+	background:#333333;
+	margin-bottom:-2px;
+}
+#header_menu ul li{
+	list-style:none;
+	display:block;
+	float:left;
+	color:#FFF;
+	font-size:17px;
+	cursor:pointer;
+	height:21px;
+	padding:9px 15px 9px 15px;
+	background:url(images/bg.png) repeat-x top;
+	border-left:1px solid #6E6E6E;
+	border-right:1px solid #000;
+	border-bottom:1px solid #000;
+}
+#header_menu ul li:hover{
+	background-position:0 -40px;
+}
+#header_menu ul li.active{
+	background:#FFF url(images/bg.png) 0 -80px;
+	color:#333333;
+	height:23px;
+	margin-bottom:-1px;
+	border-left:1px solid #FFF;
+	border-right:1px solid #FFF;
+	border-bottom:1px solid #FFF;
+}
+#header_name_quit{
+	float:right;
+	text-align:right;
+	width:30%;
+}
+#header_name_quit span{
+	color:#666666;
+	line-height:27px;
+	padding-right:7px;
+}
+#header_name_quit span #admin_name{
+	color:#29ABE2;
+}
+#quit{
+	width:27px;
+	height:27px;
+	float:right;
+	background:url(images/icons.png) no-repeat left top;
+	cursor:pointer;
+}
+#quit:hover{
+	background-position: -27px 0;
+}
+
+
+#content{
+	padding:25px 25px 50px;
+}
+#tools{
+	height:20px;
+	margin-bottom:12px;
+}
+#tools .tool_border{
+	width:11px;
+	height:20px;
+	background:url(images/icons.png) -54px 0 no-repeat;
+	cursor:default;
+	margin:0 1px 0 1px;
+}
+#tools div{
+	float:left;
+	cursor:pointer;
+	width:20px;
+	height:20px;
+}
+.tools_new_object{
+	background:url(images/icons.png) 0 -27px no-repeat;
+}
+.tools_new_object:hover{
+	background-position: 0 -47px;
+}
+.tools_edit{
+	background:url(images/icons.png) -20px -27px no-repeat;
+}
+.tools_edit:hover{
+	background-position: -20px -47px;
+}
+.tools_duplicate{
+	background:url(images/icons.png) -40px -27px no-repeat;
+}
+.tools_duplicate:hover{
+	background-position: -40px -47px;
+}
+.tools_delete{
+	background:url(images/icons.png) -60px -27px no-repeat;
+}
+.tools_delete:hover{
+	background-position: -60px -47px;
+}
+.tools_visible{
+	background:url(images/icons.png) -80px -27px no-repeat;
+}
+.tools_visible:hover{
+	background-position: -80px -47px;
+}
+.tools_invisible{
+	background:url(images/icons.png) -100px -27px no-repeat;
+}
+.tools_invisible:hover{
+	background-position: -100px -47px;
+}
+.tools_settings{
+	background:url(images/icons.png) -140px -27px no-repeat;
+}
+.tools_settings:hover{
+	background-position: -140px -47px;
+}
+.tools_help{
+	background:url(images/icons.png) -160px -27px no-repeat;
+}
+.tools_help:hover{
+	background-position: -160px -47px;
+}
+
+
+.cms_form {
+	border:1px solid #BDBDBD;
+	resize:horizontal;
+	margin-bottom:50px;
+	width: 70%;
+}
+.cms_form td {
+	padding:7px;
+	border-bottom:1px solid #BDBDBD;
+	vertical-align:top;
+	text-align:left;
+		
+}
+
+/*.cms_form > TBODY[data-line-show-mode="0"] {
+	display: none;
+}*/
+.cms_form.cms_form_configuring > TBODY {
+	display: table-row-group;
+}
+.cms_form_configuring THEAD .configure {
+	display: none;
+}
+.cms_form THEAD .save {
+	display: none;
+}
+.cms_form TD.cms_form_var_changer {
+	width: 35px;
+	padding: 0px;
+	text-align: center;
+	padding-top: 6px;
+}
+.cms_form TD.cms_form_var_changer INPUT {
+	display: none;
+}
+.cms_form_configuring TD.cms_form_var_changer INPUT {
+	display: inline;
+}
+.cms_form.cms_form_configuring THEAD .save {
+	display: inline;
+}
+.cms_form THEAD TH {
+	text-align: right;
+	background: #666;
+	padding: 4px;
+}
+.cms_form THEAD TH A {
+	color: #fff;
+	text-decoration: none;
+}
+.cms_form > TBODY[data-line-show-mode="1"]:nth-child(2n+1) TD {
+	background: #f0f0f0;
+}
+.cms_form_configuring > TBODY:nth-child(2n+1) TD { 
+	background: #f0f0f0;
+}
+.cms_form td input{
+	width:auto;
+}
+.cms_button a{
+	text-decoration:none;
+	color:#000;
+}
+#table_image{
+	width:80px;
+	height:80px;
+	background:url(images/icons.png) -121px -67px no-repeat;
+	float:left;
+	margin-right:5px;
+	cursor:pointer;
+}
+#save_button{
+	width:121px;
+	height:36px;
+	background:url(images/icons.png) 0 -67px;
+	cursor:pointer;
+	float:right;
+	margin:10px;
+}
+#save_button:hover{
+	background-position:0 -103px;
+}
+#save_button:active{
+	background-position:0 -139px;
+}
+
+.cms_admin_breadcrumbs A {
+	color: #4D4D4D;
+	font-size: 15px;
+}
+.cms_admin_breadcrumbs A:hover {
+	color: #000;
+}
+.cms_admin_breadcrumbs SPAN:last-child {
+	display: none;
+}
+.cms_list{
+	border-spacing: 1px;
+}
+.cms_list thead tr, .list thead tr {
+	height:27px;
+	font-size:15px;
+	color:#CCCCCC;
+	background:url(images/bg.png) 0 -202px;
+	font-size: 11px;
+	line-height: 10px;
+}
+.cms_list thead th {
+	cursor:pointer;
+}
+.cms_list thead tr td, .list thead tr td {
+	padding:4px 10px 4px 10px;
+	text-align:center;
+}
+.table thead tr a {
+	color:#CCCCCC;
+	padding-right:12px;
+	background:url(images/thead_arrows.png) right 7px no-repeat;
+}
+.table thead tr a:hover{
+	background-position: right -21px;
+	color:#F2F2F2;
+}
+#table_td_title_align{
+	text-align:left;
+}
+.cms_list {
+	width: 85%;
+}
+.cms_list TBODY:nth-child(2n) TD, .list TBODY:nth-child(2n)  TD {
+	background-color: #FFF;
+}
+.cms_list TBODY:nth-child(2n+1) TD, .list TBODY:nth-child(2n+1) TD {
+	background-color: #EDEDED;
+}
+.cms_list .num, .list .num {
+	font-weight: bold;
+	padding: 3px;
+	padding-right: 10px;
+	text-align: center;
+}
+.cms_list .active {
+	width: 20px;
+	padding: 0px;
+	background-image: url(images/active.sprite.png);
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+.cms_list .delete {
+	width: 26px;
+	background-image: url(images/delete.sprite.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	cursor: pointer;
+}
+.cms_list .delete:hover {
+	background-position: -41px center;
+}
+.cms_list .edit {
+	width: 26px;
+	cursor: pointer;
+	background: url(images/edit.sprite.png) left center no-repeat;
+}
+.cms_list .edit:hover {
+	background-position: -41px center;
+}
+.cms_list TBODY[data-active='1'] .active {
+	background-position: right center;
+}
+.cms_list TBODY[data-active='0'] .active {
+	background-position: left center;
+}
+.cms_list .cms_deleted_object {
+	text-decoration: line-through;
+}
+.account_inner_payment {
+	display:none;
+}
+.cms_list .add_time {
+	white-space: nowrap;
+	padding-left: 5px;
+}
+.list tbody tr, .cms_list tbody tr {
+	height:32px;
+	border:1px solid #D5D5D5;  
+}
+.table tbody tr td{
+	padding:0 10px 0 10px;
+	line-height:17px; 
+}
+.table tbody tr:hover{
+	background:url(images/bg.png) 0 -162px repeat-x;
+}
+.table tbody tr td a{
+	color:#2D2D2D;
+}
+.table tbody tr td a:hover{
+	color:#000;	
+}
+.table_tools{
+	width:50px;
+	height:20px;
+	float:right;
+}
+.table_tools div{
+	width:20px;
+	height:20px;
+	cursor:pointer;
+}
+.table_tools_edit{
+	background:url(images/icons.png) -20px -27px no-repeat;  
+	float:left;
+}
+.table_tools_edit:hover{
+	 background-position: -20px -47px;
+}
+.table_tools_delete{
+	background:url(images/icons.png) -60px -27px no-repeat;
+	float:right;
+}
+.table_tools_delete:hover{
+	background-position: -60px -47px;
+}
+.table_tool_visible{
+	background:url(images/icons.png) -80px -27px no-repeat;
+	float:left;
+}
+.table_tool_visible:hover{
+	background-position: -80px -47px;
+}
+.table_tool_invisible{
+	background:url(images/icons.png) -100px -47px no-repeat;
+	float:right;
+}
+.table .new tr{
+	background:url(images/bg.png) 0 -122px;
+	color:#FFF;
+}
+.table .new tr:hover{
+	background:url(images/bg.png) 0 -122px;
+}
+.table .new tr a{
+	color:#FFF;
+}
+.table .new tr a:hover{	
+	color:#233D01;
+}
+/** LIST PAGER */
+.cms_fast_pager {
+	width: 100px;
+}
+.cms_fast_pager INPUT {
+	border: 1px solid #999;
+	padding: 4px;
+	width: 35px;
+	text-align: center;
+	margin: 9px;
+}
+.cms_fast_pager A {
+	text-decoration: none;
+	color: #111;
+}
+/* LIST PAGER END */
+
+/*FILEMANAGER*/
+.fm_currentdir{
+	margin:0 0 20px;
+	font-weight:bold;
+}
+.priority a{
+	display:inline-block;
+	width:15px;
+	height:12px;
+	margin:0 3px;
+}
+
+.up{
+	background:url(images/up-down.png) 0 0;
+}
+.down{
+	background:url(images/up-down.png) 0 bottom;
+}
+/*FILEMANAGER END*/
+
+/** CALENDAR START **/
+.cms_calendar {
+	border: 1px solid #ddd;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+}
+.cms_calendar TD {
+	width: 40px;
+	border: 1px solid #ccc;
+	height: 40px;
+	text-align: center;
+	vertical-align: middle;
+}
+.cms_calendar TD:hover {
+	background: #e0e0e0 !important;
+}
+.cms_calendar TR:nth-child(2n+1) TD {
+	background: #f0f0f0;
+}
+TD.cms_calendar_current {
+	background: #aaa !important;
+}
+/** CALENDAR END **/
+
+/** STATISTICS TABLES **/
+.cms_stat {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 60%;
+}
+/** STAT END **/
+
+/** ADMIN NOTIFICATIONS */
+#admin_notification_block {
+	width: 300px;
+	position: fixed;
+	right: 10px;
+	top: 100px;
+	z-index: 9999;
+}
+#admin_notification_block > DIV {
+	padding: 10px;
+	background: #111;
+	color: #fff;
+	opacity: 0.7;
+	border: 2px solid #333;
+	border-radius: 10px;
+	margin-bottom: 15px;
+}
+/** ADMIN NOTIFICATIONS */
+.cms_admin_multilang THEAD TH {
+	background: #f0f0f0;
+	text-align: center;
+	cursor: pointer;
+	font-weight: normal;
+}
+.cms_admin_multilang THEAD TH.active {
+	background: #e0e0e0;
+	font-weight: bold;
+}
+/** MULTILANG FIELD */
