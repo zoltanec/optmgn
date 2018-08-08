@@ -11820,6 +11820,7 @@ a:hover, a:focus {
 }
 
 .goods-frame__list-big {
+	min-height: 310px;
 	overflow: hidden;
 	font-size: 0;
 	white-space: nowrap;

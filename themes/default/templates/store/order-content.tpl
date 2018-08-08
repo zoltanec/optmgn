@@ -1,82 +1,121 @@
-<{if $cart}>
-<{foreach item=pack key=pack_id name=pack from=$cart}>
-<table id="basket_wrap" class="packet" data-pack-id="<{$pack_id}>">
-	<{assign var=pack_summ value=0}>
-	<{foreach name=items item=data key=hash from=$pack}>
-	<{if $data.visible}>
-			<{assign var=prod_id value=$data.prod_id}>
-			<{assign var=prod value=D_Core_Factory::Store_Product($prod_id)}>
-			<{$pack_summ=$pack_summ+$prod->current_price*$data['quantity']}>
-		<tbody data-type="product" data-prod-id="<{$prod->prod_id}>" data-price="<{$prod->current_price}>" data-quantity="<{$data.quantity}>" data-hash="<{$hash}>" class="product_item basket_product_item packet_item">
-		<tr>
-		<td class="bt_img"><img class="product_image" src="<{$me.content}>/media/thumbs/product<{$prod->prod_id}>/<{$prod->picture->fileid}>" /></td>
-		<td class="bt_a">
-			<a class="product_name" href="<{$me.www}>/store/show-product/product_<{$prod->prod_id}>">
-				<{$prod->prod_name}>
-			</a>
-			<{if !empty($data.descr)}>
-				<span class="cart_desc"><{$data.descr}></span>
-			<{/if}>
-		</td>
-		<td class="bt_price"><span class="product_price product_total" >
-		<span class="prod_total" data-price="<{$prod->current_price*$data.quantity}>"><{if $discount}><{floor($prod->current_price*$data.quantity*$discount)}><{else}><{$prod->current_price*$data.quantity}><{/if}></span> руб.</span></td>
-		<td class="bt_numbers">
-			<div class="b_numbers">
-			<div class="bn_minus trans_back item_quantity" data-action="minus"></div>
-			<div class="bn_number quantity" data-null="0"><{$data['quantity']}></div>
-			<div class="bn_plus trans_back item_quantity" data-action="plus"></div>
-			</div>
-		</td>
-		<td class="bt_delete">
-			<div class="b_delete trans_back delete_item" data-action="del"></div>
-		</td>
-		</tr>
-		<tr class="hr_line <{if !$smarty.foreach.items.last}>b_clear<{else}>parenthesis<{/if}>"><td colspan="5"></td></tr>
-		</tbody>
-	<{/if}>
-     <{/foreach}>
-     <tbody><tr><td colspan="5">
-     <div class="basket_total"><span><span>Итого</span> <span class="total_value_price"><{if $discount}><{floor($pack_summ*$discount)}><{else}><{$pack_summ}><{/if}></span> руб.</span></div>
-     </td></tr></tbody>
-      <tbody><tr><td colspan="5"><div class="basket_discount">
- <{*div id="h_delivery"><input class="nodelivery" name="nodelivery" type="checkbox" data-type="self_delivery" data-price="<{$pack_summ}>" <{if !Store_Cart::checkDelivery()}>checked="checked"<{/if}>/><label>Самовывоз</label><span>-5%</span></div>
- <div id="h_discount"><input class="discount_cart" name="discount" type="checkbox" data-type="discount" data-price="<{$pack_summ}>" <{if Store_Cart::checkDiscount()}>checked="checked"<{/if}>/><label>Накопительная скидка</label><span>-5%</span></div*}>
-</div>  </td></tr></tbody>
+<tr class="cart-table__tr cart-table_custom_line" 
+    data-prod-id="<{$prod->prod_id}>"
+    data-hash="<{$hash}>">
+    <td class="cart-table__td cart-table-img">
+        <a class="cart-table-img__link" href="">
+            <img class="cart-table-img__img" src=".jpg" alt="<{$prod->prod_name}>">
+        </a>
+    </td>
+    <td class="cart-table__td cart-table-name">
+        <a class="cart-table-name__link" href=""><{$prod->prod_name}></a>
+        <div class="cart-table-props">
+            <dl class="cart-table-props__dl">
+                <dt class="cart-table-props__dt">Бренд:</dt>
+                <dd class="cart-table-props__dd"><{$prod->fields['brand']->content}></dd>
+            </dl>
+            <dl class="cart-table-props__dl">
+                <dt class="cart-table-props__dt">Количество штук в коробке:</dt>
+                <dd class="cart-table-props__dd"><{$prod->getBoxQt()}></dd>
+            </dl>
+            <dl class="cart-table-props__dl">
+                <dt class="cart-table-props__dt">Размер закупки:</dt>
+                <dd class="cart-table-props__dd">Коробка</dd>
+            </dl>
+            <dl class="cart-table-props__dl">
+                <dt class="cart-table-props__dt">Размеры:</dt>
+                <dd class="cart-table-props__dd">
+                    <{foreach item=cols key=size from=unserialize($prod->fields['wholesale-size']->content)}>
+                        <{if $cols['checked'] && $cols['value']}>
+                            <{$size}>,
+                        <{/if}>
+                    <{/foreach}>
+                </dd>
+            </dl>
+            <div class="cart-table-term-of-shipment">Срок отгрузки: 4-8 рабочих дней после оплаты</div>
+        </div>
+    </td>
 
-	</table>
-	<{/foreach}>
-	<{assign var=curr value=time()}>
-    <a id="order_btn" class="order" style="<{if $curr|date_format:"%H"<=11 || $curr|date_format:"%H">=22}>opacity:0.5;<{/if}><{if $cart_total.total_cost<300}>display:none;<{/if}>" href="<{$me.www}>/store/order-form"></a>
-<div class="store_order_form_block">
-<div class="lured_arrow"></div>
-<div class="pull">
-   <div class="titles"><span>Оформление заказа</span></div>
-</div>
-<div class="pull">
- <form id="submit_order">
- <div class="basket_form bf_short">
- <label>Ваше имя</label>
- <input type="text" name="order_name" /><div class="input_successful"></div>
- </div>
- <div class="basket_form bf_short">
- <label>Телефон</label>
- <input class="order_required" type="text" name="order_phone"  /><div class="input_successful"></div><div class="warning"><div></div>Пожалуйста, введите ваш номер телефона.</div>
- </div>
- <div class="basket_form bf_long">
- <label>Адрес</label>
- <input class="order_required" type="text" name="order_address" /><div class="input_successful"></div><div class="warning"><div></div>Пожалуйста, введите ваш адрес.</div>
- </div>
- </form>
-</div>
-<br />
-<br />
-<br />
-<br />
-<div class="line_title"><span>И мы перезвоним вам в течении 10 минут</span></div>
-<div class="busket_button_next">
- <div class="button submit_order"><div><span>Отправить</span></div></div>
-</div>
-</div>
-<{else}>
-    У вас нет ни одного заказа!
-<{/if}>
+    <!-- за шт. -->
+    <td class="cart-table__td cart-table-price">
+        <div class="cart-table__title cart-table__title_inline">Цена за ед.:</div>
+        <div class="cart-table-price__type"><{$config['store.discounts']['20 000']['title']}></div>
+        <div class="cart-table-price__cost price">
+            <span class="price__value">
+            <{if $prod->fields['wholesale-discount-price']->content}>
+                <{$prod->fields['wholesale-discount-price']->content}>
+            <{else}>
+                <{$prod->fields['wholesale-price']->content}>
+            <{/if}></span> руб.</div>
+        <div class="cart-table-price__cost cart-table-price__cost_old price price_old">
+            <span class="price__value"></span> руб.
+        </div>
+    </td>
+    if prod->getQuantityDiscount() 
+    <!-- за кор./уп. -->
+    <td class="cart-table__td cart-table-price">
+        <div class="cart-table__title cart-table__title_inline">Цена за кор.:</div>
+        <div class="cart-table-price__type"><{$config['store.discounts']['20 000']['title']}></div>
+        
+        <div class="cart-table-price__cost price">
+            <span class="price__value">
+                <{if $prod->fields['wholesale-discount-price']->content}>
+                    <{$prod->getBoxQt() * $prod->fields['wholesale-discount-price']->content}>
+                <{else}>
+                    <{$prod->getBoxQt() * $prod->fields['wholesale-price']->content}>
+                <{/if}>
+            </span> руб.
+        </div>
+        
+        <input type="hidden" name="item_price" value="7977.2">
+        <input type="hidden" name="item_summ" value="39886">
+    </td>
+
+    <td class="cart-table__td cart-table-put">
+        <div class="cart-table__title">Количество:</div>
+        <div class="put">
+            <div class="product-item-info-container product-item-hidden" data-entity="quantity-block">
+                <div class="put__counter cart-table-put__counter">
+                    <span class="minus put__arrow put__arrow_minus product-item-amount-field-btn-disabled">-</span>                    
+                    <input type="tel" class="text put__input" name="quantity" size="2" maxlength="18" min="0" step="1" value="<{$data.quantity}>">
+                    <span class="plus put__arrow put__arrow_plus product-item-amount-field-btn-disabled">+</span>
+                </div>
+                <div class="error">Данного количества нет на складе</div>
+                <div class="cart-table-put__form">кор.</div>
+            </div>
+        </div>
+    </td>
+
+    <td class="cart-table__td cart-table-total">
+        <div class="cart-table__title cart-table__title_inline">Сумма:</div>
+        <div class="cart-table-price__type">&nbsp;</div>
+            <{if $prod->fields['wholesale-discount-price']->content}>
+                <div class="cart-table-total__cost price">
+                    <span class="price__value">
+                        <{$prod->getBoxQt() * $prod->fields['wholesale-discount-price']->content}>
+                    </span> руб.
+                </div>
+                <div class="cart-table-price__cost cart-table-price__cost_old price price_old">
+                    <span class="price__value"><{$prod->getBoxQt() * $prod->fields['wholesale-price']->content}></span> руб.
+                </div>
+            <{else}>
+                <div class="cart-table-total__cost price">
+                    <span class="price__value">
+                        <{$prod->getBoxQt() * $prod->fields['wholesale-price']->content}>
+                    </span> руб.
+                </div>
+            <{/if}>
+        <div class="cart-table-price__info info-label info-label_info">
+            Экономия 1&nbsp;450.40 руб.
+        </div>
+
+        <input type="hidden" name="price_discount" value="">
+    </td>
+    <td class="cart-table__td cart-table__td--actions">
+        <div class="goods-frame__share goods-share">
+            <div class="goods-share__item goods-share__item_delay" title="В избранное" data-id=""></div>
+        </div>
+        <a class="remove cart-table__close icon icon-cross" href="#remove" title="Удалить">
+            <i></i>
+        </a>
+    </td>
+</tr>

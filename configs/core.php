@@ -19,26 +19,23 @@ $cfg['store.notify_admin']=true;
 $cfg['store.notify_admin_type']='sms';
 $cfg['store.orders.minimum_amount'] = 300;
 $cfg['store.delivery.self_discount'] = 5;
-$cfg['store.statuses'] = ['Ожидает оплаты', 'Оплачен', 'Доставка', 'Завершен'];
-$cfg['store.delivery'] = [
-    1 => [
-        'name' => 'Почта РФ',
-        'seat' => 'Почтовое отделение',
-        'cost' => 0,
-        'pay'  => '100%',
-        ],
-    6 => [
-        'name' => 'СДЭК',
-        'seat' => 'Курьером до двери',
-        'cost' => 290,
-        'pay'  => '100%',
-        ],
-    7 => [
-        'name' => 'Почта РФ',
-        'seat' => 'Почтовое отделение',
-        'cost' => 490,
-        'pay'  => 'Оплата при получении',
-        ],
+$cfg['store.statuses']  = ['Ожидает оплаты', 'Оплачен', 'Доставка', 'Завершен'];
+$cfg['store.discounts'] = [
+    '20 000'  => [
+        'class'  => 'green',
+        'title' => 'Зелёная',
+        'value' => 0.95,
+    ],
+    '80 000'  => [
+        'class'  => 'blue',
+        'title' => 'Синяя',
+        'value' => 0.93,
+    ],
+    '200 000' => [
+        'class'  => 'red',
+        'title' => 'Красная',
+        'value' => 0.9,
+    ],
 ];
 
 $cfg['notify.sms.provider'] = 'smsru';
