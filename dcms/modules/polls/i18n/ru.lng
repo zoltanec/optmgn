@@ -1,0 +1,15 @@
+@@ru
+@POLLS_MODULE_NAME
+Опросы
+@POLLS_QUESTION_MODE_MANUAL_ENTER
+ввод вручную
+@POLLS_QUESTION_MODE_SINGLE_ANSWER
+выбор одного ответа
+@POLLS_QUESTION_MODE_ONE_OR_MANY
+выбор одного или нескольких ответов
+@POLLS_QUESTION_MODE_ONE_OR_MANY_OR_MANUAL
+выбор одного или нескольких ответов или ввод вручную
+@POLLS_QUESTION_MODE_ONE_OR_MANY_AND_MANUAL
+выбор одного или нескольких ответов и ввод вручную
+@POLLS_ADMIN_INDEX
+Администрирование опросов

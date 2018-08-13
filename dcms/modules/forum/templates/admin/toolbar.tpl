@@ -1,0 +1,1 @@
+<a href="<{$run.me}>/edit-section/sid_1/"><img src="<{$theme.mimages}>/forum/main_section.png">Основной раздел</a>

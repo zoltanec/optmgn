@@ -1,0 +1,23 @@
+{
+	"table_name": "users",
+	"model_name" : "user",
+	"comment" : "Site users list",
+	"fields" : {
+	    "uid" : {
+	    	"primary": "1",
+            "incremented": "1",
+            "type": "number",
+            "min" : 1,
+            "max" : 1500000
+        }, 
+        "username": {
+               "default" : "None",
+               "type": "char",
+               "length": "40"
+        },
+        "avatar": {
+               "type": "vchar",
+               "length": "30"
+        }
+	}
+}

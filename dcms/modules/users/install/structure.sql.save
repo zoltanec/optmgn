@@ -1,0 +1,79 @@
+--
+DROP TABLE IF EXISTS #PX#_users;
+-- 
+CREATE TABLE #PX#_users (
+uid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT "Site user ID",
+add_time INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "User registration time",
+username VARCHAR(60) NOT NULL DEFAULT '' COMMENT "Username",
+password VARCHAR(32) NOT NULL DEFAULT '' COMMENT "Password hash",
+avatar VARCHAR(30) NOT NULL DEFAULT '' COMMENT "User avatar",
+active tinyint(1) NOT NULL DEFAULT '1' COMMENT "User activity flag",
+active_from INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "User active from time",
+user_from VARCHAR(25) NOT NULL DEFAULT '' COMMENT "Where are this user from",
+interests VARCHAR(50) NOT NULL DEFAULT '' COMMENT "User interests", 
+messages INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "Messages on site",
+karma SMALLINT UNSIGNED NOT NULL DEFAULT 0 COMMENT "User karma",
+karma_update INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "Last karma update time",
+sex CHAR(1) NOT NULL DEFAULT 'M' COMMENT "User sex",
+birth DATE NOT NULL DEFAULT '0000-00-00' COMMENT "Birth date",
+birth_visibility BOOL NOT NULL DEFAULT true COMMENT "Show user birth date or not",
+about VARCHAR(400) NOT NULL DEFAULT '' COMMENT "Short info about user",
+) ENGINE=INNODB COMMENT="CMS Users List";
+--
+DROP TABLE IF EXISTS #PX#_users_sessions;
+--
+CREATE TABLE #PX#_users_sessions ( 
+session_id CHAR(32) NOT NULL DEFAULT '' COMMENT "User session id",
+first INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "First action time for this session",
+last TIMESTAMP COMMENT "Last activity time for this session",
+uid INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "If user is authorized, his uid, 0 if not", 
+name CHAR(25) NOT NULL DEFAULT 0 COMMENT "Visible username if authorized",
+ip INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "User session IP, int",
+module CHAR(20) NOT NULL DEFAULT 'index' COMMENT "Last action module", /*текущий модуль в котором находится 
+пользователь*/
+object_hash CHAR(32) NOT NULL DEFAULT '',/*хэш объекта в котором находится пользователь сейчас*/
+PRIMARY KEY (session_id)
+) ENGINE=MEMORY;
+--                              
+DROP TABLE IF EXISTS #PX#_users_groups;
+--
+CREATE TABLE #PX#_users_groups (
+gid SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT "Group ID",
+group_name VARCHAR(30) NOT NULL DEFAULT 'GroupName' COMMENT "Group name",
+group_color MEDIUMINT UNSIGNED NOT NULL DEFAULT 0 COMMENT "Group color, RGB, will we unpacked to #xxxxxx"
+) ENGINE=INNODB COMMENT='Users ACL';
+--
+DROP TABLE IF EXISTS #PX#_users_warnings;
+-- 
+CREATE TABLE #PX#_users_warnings (
+wid INT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT "Warning ID",
+add_time INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "Warning add time",
+uid INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "To who this warning was sended",
+msg VARCHAR(400) NOT NULL DEFAULT '' COMMENT "Moderator message",  
+moderator_uid INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "Moderator UID"
+) ENGINE='INNODB' COMMENT="Site users warnings";
+--
+DROP TABLE IF EXISTS #PX#_users_private_chats;
+--
+CREATE TABLE #PX#_users_private_chats (
+chatid BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT "Chat id",
+owner INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "Who own this chat, uid",
+recipient INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "Who recieve message from this chat, uid",
+last_message CHAR(47) NOT NULL DEFAULT '' COMMENT "Content of last message in chat session",
+messages MEDIUMINT UNSIGNED NOT NULL DEFAULT 0 COMMENT "Total messages in chat for chat owner",
+upd_time INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "Last chat update time",
+unread SMALLINT UNSIGNED NOT NULL DEFAULT 0 COMMENT "Total unread messages for chat owner",
+outgoing BOOL NOT NULL DEFAULT FALSE
+) ENGINE='INNODB' COMMENT="User chats";
+--
+DROP TABLE IF EXISTS #PX#_users_private_messages;
+--
+CREATE TABLE #PX#_users_private_messages ( 
+msgid BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT "Private message ID",
+chatid_A INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "Message chatid for sender",
+chatid_B INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "Message chatid for recipient", 
+add_time INT UNSIGNED NOT NULL DEFAULT 0 COMMENT "Message add time, in unixtime",
+sender INT UNSIGNED NOT NULL DEFAULT 0, 
+content TEXT COMMENT "Message content",
+active_flag TINYINT UNSIGNED NOT NULL DEFAULT 3 COMMENT "Active for user,3-active, 2,1 - only for one"
+) ENGINE='INNODB' COMMENT="Users private mails";

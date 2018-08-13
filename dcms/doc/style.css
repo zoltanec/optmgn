@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+CODE {
+	background-color: #222;
+	white-space: pre;
+	display: block;
+	color: #fff;
+	padding: 10px;
+	margin: 10px;
+	width: 80%;
+	border: 2px solid #555;
+}
+CODE B {
+	color: #ff9a22;
+}
+CODE I {
+	color: #499aff;
+	font-style: normal;
+}
+CODE S {
+	color: #ff6b6b;
+	text-decoration: none;
+}
+CODE Q {
+	display: inline;
+	color: #199230;
+	quotes: none;
+}

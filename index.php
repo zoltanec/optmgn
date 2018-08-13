@@ -1,4 +1,5 @@
 <?php
+
 date_default_timezone_set("Asia/Yekaterinburg");
 require_once 'configs/core.php';
 require_once $cfg['dcmspath']."/init.php";

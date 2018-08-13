@@ -1,0 +1,29 @@
+@@ru
+@PAGES_MODULE_NAME
+Управление материалами сайта
+@NEEDED_PAGE_IS_INACTIVE
+Запрашиваемая вами страница отключена
+@NEEDED_PAGE_IS_INACTIVE_BODY
+Запрашиваемая вами страница не активна, попробуйте зайти позднее.
+@EXCEPTION_NO_SUCH_STATIC_PAGE_TITLE
+Запрашиваемая вами страница не найдена
+@EXCEPTION_NO_SUCH_STATIC_PAGE_BODY
+Страница к которой вы попытались обратиться не найдена в базе данных, возможно она была удалена или перемещена.
+@PAGES_BREADCRUMBS
+Отображение хлебных крошек
+@PAGES_ADMIN_INTERFACE
+интерфейс админки в зависимости от конфигурации
+@PAGES_MENU_ORIENTATION
+Отображение горизонтального или вертикального меню по умолчанию
+@PAGES_ANNOTATION_CUT
+Обрезка аннотации из контента
+@PAGES_ANNOTATION_LEFT
+Символы в конце аннотации
+@PAGES_TIME
+Отображение времени добавления
+@PAGES_DATEFORMAT
+Формат времени
+@PAGES_AUTHOR
+Отображение автора
+@PAGES_SHARE
+Отображение кнопок поделится

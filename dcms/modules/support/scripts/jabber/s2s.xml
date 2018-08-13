@@ -1,0 +1,66 @@
+<!-- s2s configuration -->
+<s2s>
+  <!-- Our ID on the network (default: s2s) -->
+  <id>s2s</id>
+
+  <pidfile>/var/run/jabber/s2s.pid</pidfile>
+
+  <router>
+    <ip>127.0.0.1</ip>            <!-- default: 127.0.0.1 -->
+    <port>5347</port>             <!-- default: 5347 -->
+
+    <user>jabberd</user>          <!-- default: jabberd -->
+    <pass>secretNO</pass>           <!-- default: secret -->
+
+    <retry>
+      <init>3</init>
+      <lost>3</lost>
+      <sleep>2</sleep>
+    </retry>
+  </router>
+
+  <log type='syslog'>
+    <ident>jabberd/s2s</ident>
+    <facility>local3</facility>
+  </log>
+
+  <local>
+    <ip>0.0.0.0</ip>
+    <port>5269</port>
+  </local>
+
+  <io>
+    <max_fds>1024</max_fds>
+    <limits>
+      <stanzasize>65535</stanzasize>
+    </limits>
+
+  </io>
+
+  <check>
+    <interval>60</interval>
+    <queue>60</queue>
+    <retry>300</retry>
+
+    <idle>86400</idle>
+    <keepalive>0</keepalive>
+    <dnscache>300</dnscache>
+  </check>
+
+  <stats>
+  </stats>
+
+  <lookup>
+    <srv>xmpp-server</srv>
+    <srv>jabber</srv>
+
+    <min-ttl>30</min-ttl>
+    <max-ttl>86400</max-ttl>
+    <bad-host-timeout>3600</bad-host-timeout>
+  </lookup>
+
+  <out-reuse-conn/>
+</s2s>
+<!--
+  vim: syntax=xml
+-->

@@ -1,0 +1,17 @@
+@@ru
+@STORE_MODULE_NAME
+Интернет-магазин
+@STORE_ORDER_LIST
+Список заказов
+@STORE_YOUR_ORDER_ACCEPTED
+Ваш заказ принят. В ближайшее время с вами свяжется наш оператор. Код заказа: 
+@STORE_ORDER
+Заказ
+@STORE_YOUR_ORDER_APPROVED
+Ваш заказ подтвержден оператором.
+@STORE_YOU_CAN_PAY_FOR_ORDER
+Вы можете оплатить ваш заказ в личном кабинете или через форму поиска заказа. Код заказа: 
+@STORE_ORDER_PAYED
+По заказу %s получена оплата.
+@STORE_ORDER_CLOSES
+Заказ закрыт

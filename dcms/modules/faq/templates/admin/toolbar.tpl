@@ -1,0 +1,1 @@
+<a href="<{$t.run.me}>/">Управление разделом</a>&nbsp;&nbsp;<a href="<{$me.www}>/admin/run/feedback/view-msgs">Обратная связь с пользователями</a>

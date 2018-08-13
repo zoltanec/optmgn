@@ -80,18 +80,7 @@
 				<button class="header-search__button icon icon-zoom" type="submit"></button>
 				<input type="hidden" value="Поиск" class="button icon" />
 			</form>
-			<div class="col-item header-basket">
-				<a class="header-basket__frame" href="<{$me.www}>/store/order">
-					<span class="header-basket__baloon"><b>Для вашего региона:</b> <br><b>Минимальный заказ</b> - 10 000 руб. <br>Бесплатная доставка от 50 000 руб.</span>
-					<span class="header-basket__cart">
-						<span class="header-basket__length"></span>
-					</span>
-					<span class="header-basket__info">
-						<span class="header-basket__text">Корзина</span>
-						<span class="header-basket__value">пуста</span>
-					</span>
-				</a>
-			</div>
+			<{include file='store;cart-widget'}>
 		</div>
     </header>
 

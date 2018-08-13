@@ -1,6 +1,7 @@
 (function(D) {
 	D.register('store', new function() {
 		var self = this;
+
 		self.last_prod_id = 0;
 		self.last_wheel_time = 0;
 		self.wheel_delay = 200;
@@ -18,6 +19,50 @@
 				var timer;
 				var flaf_hover=0;
 
+
+			// select small image for show in show-product
+			$('.goods-frame__item-sml').live("click",function(){
+				$('.goods-frame__item-sml.active').removeClass('active');
+				$(this).addClass('active');
+				var src = $(this).find('.goods-frame__image-sml').attr('src');
+				$('.goods-frame__image-big').attr('src', src);
+
+				return false;
+			});
+
+			// change good's item's panel's text
+			$('.tabs-goods__item').live("click",function(e){
+				e.preventDefault();
+				var panel_id = $(this).attr('data-id');
+				if (!$(this).hasClass('active')) {
+					$('.tabs-goods__item').removeClass('active');
+					$(this).addClass('active');
+					$('.tabs-goods__panel').removeClass('active').hide();
+					$('#'+panel_id+'').addClass('active').show();
+				}
+			});
+
+			//change value of product after loading page
+				function changeValue() {
+					if($("#basket__page").length != 0){
+						var product_price_tr = $(".cart-table__tr");
+
+						product_price_tr.each(function(key, item){
+							var quant = $(item).find('input[name=quantity]').val();
+							var product_price = $(item).find('.multiply-price');
+							var static_price = product_price.attr('data-price');
+							if (product_price.text() != '') {
+								product_price.text(static_price*quant);
+							}
+						})
+					}
+				}
+			    var change = changeValue();
+
+
+
+
+
 				//Добавляем в список продукты
 				if($('DIV.gallery DIV.product').length || $('#content .basket_product_item').length){
 					$('.product, .basket_product_item').each(function() {
@@ -33,7 +78,26 @@
                     } else {
                         product = $('.product_actions');
                         var quantity = $('input[name=quantity]').val();
-                        if(toCart.hasClass('l-goods-i__incart_add-one')) {
+                        if(toCart.hasClass(
+
+
+
+
+
+
+
+
+
+
+
+								'l-goods-i__incart_add-one')) {
+
+
+
+
+
+
+
                             quantity = 1;
                         }
                     }
@@ -50,7 +114,8 @@
                     });
                     return false;
                 });
-                
+
+			    //add or subtract quantity of product
                 $('a.put__arrow').live("click",function(){
                     var quantityInput = $(this).parents('.put__counter').find('input[name=quantity]');
                     var quantity = quantityInput.val();
@@ -62,6 +127,18 @@
                         quantity++;
                     }
                     quantityInput.val(quantity);
+
+					if($(this).hasClass("put__arrow_basket")){
+							var product_price = $(this).parents(".cart-table__tr").find(".multiply-price");
+							var quant = $(this).parent().find('input[name=quantity]').val();
+							product_price.each(function(){
+								var static_price = $(this).attr('data-price');
+								var	p = static_price*quant;
+								if(p!=0){
+									$(this).text(p);
+								}
+							})
+					}
                     return false;
                 });
 				

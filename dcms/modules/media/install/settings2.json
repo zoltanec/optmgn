@@ -1,0 +1,71 @@
+## get-by-dimension
+## add-file-ajax
+##Убрать mode ***
+## Разобраться с run и TPL run
+## Как через ajax отправить 404 ошибку
+## Не указывать путь если ошибка redirect or json
+##Сделать контроллер, возможность переключаться с помощью контроллера на разные темы админки
+##ПРоверить сделать отображение файлов в других модулях
+##загрузка нескольких картинок
+[
+#Возможность редактировать dirid и указать вручную при создании новой
+{"id" : "dir_edit",
+ 	"lng" : "DIR_EDIT",
+ 	"type": "bool",
+ 	"default": 1},
+#Отображение иконки дирректории
+	{"id" : "dir_icon",
+ 	"lng" : "DIR_ICON",
+ 	"type": "bool",
+ 	"default": 1},
+#Размер иконки дирректории
+	{"id" : "dir_icon_size",
+ 	"lng" : "DIR_ICON_SIZE",
+ 	"type": "string",
+ 	"default": "300x300"},
+#Размер изображения ***
+{"id": "img_size",
+ 	"lng":  "IMG_SIZE",
+ 	"type": "string",
+ 	"default" : "800x800"},
+#Размер превью ***
+	{"id" : "thumb_size",
+ 	"lng" : "THUMB_SIZE",
+ 	"type": "string",
+ 	"default": "200x200"},
+#Сохранение оригинального изображения ***
+	{"id" : "save_original",
+ 	"lng" : "SAVE_ORIGINAL",
+ 	"type": "bool",
+ 	"default": "1"},
+#Отображения хлебных крошек ***
+	{"id" : "breadcrumbs",
+ 	"lng" : "BREADCRUMBS",
+ 	"type": "bool",
+ 	"default": "1"},
+#Шаблон именования id файлов ***
+	{"id" : "id_naming",
+ 	"lng" : "id_naming",
+ 	"type": "string",
+ 	"default": "1"},
+#Шаблон именования названия файлов ***
+	{"id" : "naming",
+ 	"lng" : "naming",
+ 	"type": "string",
+ 	"default": "1"},
+#Именование id файлов по имени файла источника ***
+	{"id" : "fileid_from_source",
+ 	"lng" : "FEEDBACK_KNOW",
+ 	"type": "bool",
+ 	"default": "1"},
+#Удалять файл целиком или только из базы
+	{"id" : "full_delete",
+ 	"lng" : "FULL_DELETE",
+ 	"type": "bool",
+ 	"default": "1"},
+#Тема модуля
+	{"id" : "theme",
+ 	"lng" : "theme",
+ 	"type": "string",
+ 	"default": "usefull"},
+]

@@ -1,0 +1,31 @@
+@@ru
+@ADD_NEW_COMMENT
+Добавить комментарий
+@COMMENTS
+Комментарии
+@ADD_NEW_COMMENT
+Добавить комментарий
+@COMMENT_MODERATOR_NOTE
+Примечание модератора
+@NO_SUCH_COMMENT
+Комментарий не найден
+@VOTING_OWN_MESSAGES_PROHIBITED
+Голосовать за собственные сообщения запрещено
+@ERROR_UPDATING_RATING
+Произошла ошибка при изменении рейтинга.
+@TO_POST_COMMENT_YOU_NEED_TO_AUTHORIZE_FIRST
+Для отправки сообщений необходимо авторизоваться
+@COMMENT_SUCCESSFULLY_SENDED
+Комментарий отправлен
+@SEND_MESSAGE
+Отправить
+@CLEAR
+Очистить
+@SITE_RULES
+Правила сайта
+@~COMMENTS_COMMENT_WAS_CHANGED_CONFIRM_EXIT
+Комментарий был изменен. Вы уверены, что хотите выйти без сохранения?
+@~COMMENTS_MESSAGE_WILL_BE_APPROVED_AFTER_MODERATOR_CHECK
+Ваше сообщений будет размещено после проверки модераторами!
+@~COMMENTS_CONFIRM_COMMENT_DELETE
+Комментарий будет удален. Продолжить?

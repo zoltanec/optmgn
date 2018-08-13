@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link href="../style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+В шаблонах выполняемых для обычных посетителей сайта определены следующие переменные:
+<ul>
+<li>$t - глобальная область видимости;
+<li>$me - переменная содержит необходимые для шаблонизатора данные. В нее входят следующие элементы, все пути идут без завершающего слеша:
+<ul>
+	<li>$me.path - путь для запуска модуля. То есть в модуле guestbook переменная будет содержать http://site.name/site/path/guestbook;
+	<li>$me.www - путь к сайту. То есть http://site.name/site/path;
+	<li>$me.content - веб путь к каталогу контента ;
+	<li>$me.my_content - путь к каталогу контента данного модуля ;
+</ul>
+<li>$theme - информация о теме. 
+<ul>
+	<li>$theme.css - путь к css файлам сайта;
+	<li>$theme.images - путь к картинкам связанным с темой сайта;
+</ul>
+</ul>
+
+В шаблонах административной панели:
+
+Для отображения списка используется класс "cms_list", внутри него находятся TBODY с data-type="object", 
+у этих объектов должен быть атрибут data-object-id="object_id()" из которого можно восстановить сам объект.
+
+
+
+</body>
+</html>

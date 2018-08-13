@@ -16,20 +16,12 @@ if ($prod->category_code == 'manfootwear') {
     $prod->prod_name = 'Кроссовки ' . $brand . ' ' . $prod->prod_name;
 }
 
-$boxQt = 0;
-foreach (unserialize($prod->fields['wholesale-size']->content) as $cols) {
-	if ($cols['checked'] && $cols['value']) {
-		$boxQt += $cols['value'];
-	}
-}
-
 D::$tpl->title       = $prod->prod_name . ' купить за ' . $prod->price . ' руб в интернет магазине кроссовок SportLand';
 D::$tpl->description = $prod->descr;
 
 $T = array_merge($T, [
     'prod'         => $prod,
     'product'      => $prod,
-	'boxQt'		   => $boxQt,
     'cur_category' => D::$req->textLine('param1'),
 ]);    
 ?>

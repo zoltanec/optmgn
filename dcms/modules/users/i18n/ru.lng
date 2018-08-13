@@ -1,0 +1,64 @@
+@@ru
+@USERNAME
+Номер телефона
+@PASSWORD
+Пароль
+@REMEMBER_ME
+Запомнить меня
+@LOG_IN
+Войти
+@RULES
+Правила
+@~USERS_REGISTRATION_USERNAME_FREE
+имя свободно
+@~USERS_REGISTRATION_USERNAME_USED
+имя занято
+@~AUTHORIZATION_SUCCESSFULL
+Авторизация выполнена успешно.
+@~SESSION_CLOSED
+Сессия закрыта.
+@PRIVATE_CHAT_WITH
+Приватный чат с 
+@SEND
+Отправить
+@USERS_REGISTRATION_SUBMIT
+Зарегистрироваться
+@USERS_REGISTRATION_CAPTCHA
+Проверочный код
+@USERS_REGISTRATION_CONFIRM_RULES
+Я согласен с правилами
+@~USERS_REGISTRATION_PASSWORDS_MISMATCH
+пароли не совпадают
+@~USERS_REGISTRATION_PASSWORDS_OK
+пароли совпадают
+@~USERS_REGISTRATION_PASSWORDS_TOO_SHORT
+пароль слишком короткий
+@~USERS_PRESS_TO_PM_TO_OPEN_CHAT
+Нажмите на сообщение, чтобы запустить чат.
+@~DELETE_USER_PM_MESSAGE
+Удалить личное сообщение?
+@USERS_ENTER_PASSWORD_1
+Введите пароль
+@USERS_ENTER_PASSWORD_2
+Введите пароль еще раз
+@USERS_ENTER_YOUR_EMAIL_HERE
+укажите адрес действующего почтового ящика...
+@USERS_REGISTRATION_EMAIL_HEADER
+Подтверждение регистрации на сайте %sitename%
+@USERS_REGISTRATION_EMAIL_BODY
+Здравствуйте, Вы или кто либо другой зарегистрировались на сайте %sitename% ( %siteaddr% ).
+
+Ваше имя пользователя: %username%
+для подтверждения введите код: %code%
+или перейдите по ссылке:
+
+%validatelink%
+
+@USERS_WAIT_FOR_CONFIRMATION
+Подтверждение E-Mail
+@USERS_WAIT_FOR_CONFIRMATION_BODY
+На указанный вами адрес E-Mail было отправлено письмо с кодом активации. Вам необходимо ввести отправленный код, либо перейти по ссылке указанной в письме.
+@USERS_ENTER_CONFIRMATION_CODE
+Введите код подтверждения
+@USERS_SUBMIT_CONFIRM_CODE
+Подтвердить

@@ -1,0 +1,2 @@
+<a href="<{$run.me}>/"><img src="<{$theme.mimages}>/toolbar/full-list.png">Все страницы</a> | 
+<a href="<{$run.me}>/add-page/" onclick='return confirm("Создать новую страницу и перейти к ее редактированию?");'>Добавить страницу</a>

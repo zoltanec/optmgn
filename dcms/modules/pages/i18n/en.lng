@@ -1,0 +1,29 @@
+@@en
+@PAGES_MODULE_NAME
+Static pages
+@NEEDED_PAGE_IS_INACTIVE
+Needed page is inactive
+@NEEDED_PAGE_IS_INACTIVE_BODY
+Needed page is inactive, please try again later
+@EXCEPTION_NO_SUCH_STATIC_PAGE_TITLE
+Needed page not found
+@EXCEPTION_NO_SUCH_STATIC_PAGE_BODY
+Needed page not found in database, perhaps it was deleted or moved
+@PAGES_BREADCRUMBS
+pages breadcrumbs
+@PAGES_ADMIN_INTERFACE
+pages admin interface
+@PAGES_MENU_ORIENTATION
+default menu orientation
+@PAGES_ANNOTATION_CUT
+cols symbols of annotation cut 
+@PAGES_ANNOTATION_LEFT
+annotation last symbol
+@PAGES_TIME
+pages time
+@PAGES_DATEFORMAT
+pages time dateformat
+@PAGES_AUTHOR
+author
+@PAGES_SHARE
+share buttons

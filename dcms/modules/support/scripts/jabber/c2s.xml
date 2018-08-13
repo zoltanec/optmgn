@@ -1,0 +1,97 @@
+<c2s>
+  <id>c2s</id>
+  <pidfile>/var/run/jabber/c2s.pid</pidfile>
+
+  <router>
+    <ip>127.0.0.1</ip>            <!-- default: 127.0.0.1 -->
+    <port>5347</port>             <!-- default: 5347 -->
+
+    <user>jabberd</user>          <!-- default: jabberd -->
+    <pass>secretNO</pass>           <!-- default: secret -->
+
+    <retry>
+      <init>3</init>
+      <lost>3</lost>
+      <sleep>2</sleep>
+    </retry>
+  </router>
+
+  <log type='syslog'>
+    <ident>jabberd/c2s</ident>
+    <facility>local3</facility>
+  </log>
+
+  <local>
+    <id register-enable='false' password-change='false'>#REPLACE_HOSTNAME#</id>
+    <ip>0.0.0.0</ip>
+    <port>5222</port>
+  </local>
+
+  <io>
+    <max_fds>8096</max_fds>
+    <limits>
+      <bytes>0</bytes>
+      <stanzas>1000</stanzas>
+      <connects>0</connects>
+      <stanzasize>65535</stanzasize>
+    </limits>
+
+
+    <access>
+      <order>deny,allow</order>
+-      <allow ip='127.0.0.1'/>
+    </access>
+
+    <check>
+      <interval>0</interval>
+      <idle>0</idle>
+      <keepalive>0</keepalive>
+    </check>
+
+  </io>
+
+  <stats>
+  </stats>
+
+  <authreg>
+    <path>/usr/lib64/jabberd</path>
+    <module>pipe</module>
+    <mechanisms>
+
+      <traditional>
+        <plain/>
+        <digest/>
+      </traditional>
+      
+      <sasl>
+        <plain/>
+        <digest-md5/>
+        <!--
+        <anonymous/>
+        <gssapi/>
+        -->
+      </sasl>
+
+    </mechanisms>
+
+    <ssl-mechanisms>
+
+      <traditional>
+        <plain/>
+      </traditional>
+
+      <sasl>
+        <plain/>
+      </sasl>
+
+    </ssl-mechanisms>
+
+    <pipe>
+      <exec>/etc/jabber/auth.pl</exec>
+    </pipe>
+  </authreg>
+
+</c2s>
+<!--
+  vim: syntax=xml
+-->

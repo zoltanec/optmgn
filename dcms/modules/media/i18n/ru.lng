@@ -1,0 +1,9 @@
+@@ru
+@MEDIA_MODULE_NAME
+Медиатека
+@~UPDATE_MEDIA_DIR_STAT
+Обновить статистику каталога?
+@~DELETE_SELECTED_MEDIA_FILES
+Удалить выбранные файлы?
+@~DELETE_MEDIA_FILE
+Удалить данные файл?

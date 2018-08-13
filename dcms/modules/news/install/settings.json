@@ -1,0 +1,11 @@
+# количество новостей отображаемых на главной странице
+[{"id": "latest_news_count",
+ 	"lng":  "NEWS_LATEST_NEWS_COUNT_SETTING",
+ 	"type": "int",
+ 	"validator" : "0-50"},
+# основной режим комментирования статей, по умолчанию есть комментарии
+ {"id" : "default_comments_mode",
+ 	"lng" : "NEWS_DEFAULT_COMMENTS_MODE",
+ 	"type": "bool",
+ 	"default": 1}
+]	

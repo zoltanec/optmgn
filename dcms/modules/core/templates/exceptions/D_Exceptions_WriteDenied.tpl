@@ -1,0 +1,1 @@
+Write denied to <{$e->getMessage()}>

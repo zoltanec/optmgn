@@ -1,0 +1,86 @@
+<!-- Router configuration -->
+<router>
+  <id>router</id>
+  <pidfile>/var/run/jabber/router.pid</pidfile>
+  <log type='syslog'>
+    <ident>jabberd/router</ident>
+    <facility>local3</facility>
+  </log>
+
+  <local>
+    <ip>0.0.0.0</ip>
+    <port>5347</port>
+    <users>/etc/jabber/router-users.xml</users>
+    <secret>secretNO</secret>
+  </local>
+
+  <check>
+    <interval>60</interval>
+     <keepalive>0</keepalive>
+  </check>
+
+  <io>
+    <max_fds>8096</max_fds>
+    <limits>
+      <bytes>0</bytes>
+      <connects>0</connects>
+    </limits>
+
+    <access>
+      <order>allow,deny</order>
+    </access>
+  </io>
+
+  <!-- Name aliases.
+
+       Packets destined for the domain specified in the "name" attribute
+       will be routed to the component that has currently bound the name
+       in the "target" attribute (assuming it is online).
+
+       This is usually only required for some kinds of legacy
+       components (particularly jabberd 1.4 "uplink" components) -->
+  <aliases>
+    <!-- Example for a MUC component running from a jabberd 1.4 uplink -->
+    <!--
+    <alias name='conference.domain.com' target='muclinker'/>
+    -->
+  </aliases>
+
+  <!-- Access control information -->
+  <aci>
+    <!-- The usernames listed here will get access to all restricted
+         functions, regardless of restrictions further down -->
+    <acl type='all'>
+      <user>jabberd</user>
+    </acl>
+
+    <!-- These users can bind names other than their username -->
+    <!--
+    <acl type='bind'>
+    </acl>
+    -->
+
+    <!-- These users can bind a name as a default route -->
+    <!--
+    <acl type='default-route'>
+      <user>s2s</user>
+    </acl>
+    -->
+
+    <!-- These users can elect to receive all packets that pass through the router -->
+    <!--
+    <acl type='log'>
+      <user>msglog</user>
+    </acl>
+    -->
+
+    <!-- File containing packet filter rules.
+         May be used for fine grained packet routing control. -->
+    <filter>/etc/jabber/router-filter.xml</filter>
+
+  </aci>
+
+</router>
+<!--
+  vim: syntax=xml
+-->

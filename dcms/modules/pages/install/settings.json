@@ -1,0 +1,88 @@
+[
+# Отображение хлебных крошек
+{"id": "breadcrumbs",
+ 	"lng":  "PAGES_BREADCRUMBS",
+ 	"type": "bool",
+ 	"default" : "1"},
+# Отображение даты создания
+{"id": "time",
+ 	"lng":  "PAGES_TIME",
+ 	"type": "bool",
+ 	"default" : "1"},
+# Формат даты
+{"id": "date_format",
+ 	"lng":  "PAGES_DATEFORMAT",
+ 	"type": "string",
+ 	"default" : "%d.%m.%Y"},
+# Отображение автора
+{"id": "author",
+ 	"lng":  "PAGES_AUTHOR",
+ 	"type": "bool",
+ 	"default" : "1"},
+# Отображение кнопок поделиться
+{"id": "share",
+ 	"lng":  "PAGES_SHARE",
+ 	"type": "bool",
+ 	"default" : "1"},
+# Простой интерфейс админки в зависимости от конфигурации
+ {"id" : "simple_interface",
+ 	"lng" : "PAGES_ADMIN_INTERFACE",
+ 	"type": "bool",
+ 	"default": "0"},
+# Отображение горизонтального или вертикального меню по умолчанию
+	{"id" : "menu_orientation",
+ 	"lng" : "PAGES_MENU_ORIENTATION",
+ 	"type": "string",
+ 	"default": "gorizontal"},
+# Аннотация, либо указывается количество символов (int) для получения обрезкой из контента
+#или она устанавливается как поле(false) - TODO реализовать	
+	{"id" : "annotation_cut",
+ 	"lng" : "PAGES_ANNOTATION_CUT",
+ 	"type": "int",
+ 	"default": "200"},
+#Добавить указанные символы в конец аннотации. Например, три точки ...	
+	{"id" : "annotation_left",
+ 	"lng" : "PAGES_ANNOTATION_LEFT",
+ 	"type": "string",
+ 	"default": "..."},
+#Именование id файлов по имени файла источника
+	{"id" : "fileid_from_source",
+ 	"lng" : "FILEID_FROM_SOURCE",
+ 	"type": "bool",
+ 	"default": "1"},
+#Размер превью
+	{"id" : "thumb_size",
+ 	"lng" : "THUMB_SIZE",
+ 	"type": "string",
+ 	"default": "200x200"},
+#Сохранение оригинального изображения
+	{"id" : "save_original",
+ 	"lng" : "SAVE_ORIGINAL",
+ 	"type": "bool",
+ 	"default": "1"},
+#Шаблон именования id файлов
+	{"id" : "id_naming",
+ 	"lng" : "id_naming",
+ 	"type": "string",
+ 	"default": "1"},
+#Шаблон именования названия файлов
+	{"id" : "naming",
+ 	"lng" : "naming",
+ 	"type": "string",
+ 	"default": "1"},
+#Отображать иконки для меню либо брать маленькие иконки раздела либо
+	{"id" : "menu_icons",
+ 	"lng" : "MENU_ICONS",
+ 	"type": "bool",
+ 	"default": "1"},
+#Иконки для раздела
+	{"id" : "page_icons",
+ 	"lng" : "PAGE_ICONS",
+ 	"type": "bool",
+ 	"default": "1"},
+#Маленькие иконки для раздела Либо загружаются отдельно либо беруться из page_icons либо беруться из меню либо отсутствуют
+	{"id" : "page_icons",
+ 	"lng" : "PAGE_ICONS",
+ 	"type": "string",
+ 	"default": "1"}
+]

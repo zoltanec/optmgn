@@ -1,0 +1,27 @@
+# количество новостей отображаемых на главной странице
+{"entity_table_name":"news",
+ 	"entity_class_name":"NEWS_ENTITY_NEWS",
+ 	"entity_desc":"for news",
+ 	"entity_fields":[
+ 		{
+	 		"field_name" : "entity_news_id",
+	 		"field_type" : "INT",
+	 		"size":"10",
+	 		"not_null": true,
+	 		"default": "DEFAULT 0",
+	 		"autoincrement":true,
+	 		"primary_key":true,
+	 		"field_comment":""},
+ 		{
+	 		"field_name" : "entity_news_cont",
+	 		"field_type" : "TEXT",
+	 		"size":"",
+	 		"not_null": false,
+	 		"default": "",
+	 		"autoincrement":false,
+	 		"primary_key":true,
+	 		"field_comment":""
+ 		}
+ 	]
+ }
+	

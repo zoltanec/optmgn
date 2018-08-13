@@ -1,0 +1,11 @@
+@@ru
+@NEWS_MODULE_NAME
+Новости
+@NEWS_LATEST_NEWS_COUNT_SETTING
+Количество новостей на главной странице
+@NEWS_LATEST_NEWS_COUNT_SETTING_DESCR
+Сколько новостей необходимо отображать на главной странице модуля новости. Рекомендуемое значение 10 - 20 новостей.
+@NEWS_DEFAULT_COMMENTS_MODE
+Стандартный режим комментариев
+@NEWS_DEFAULT_COMMENTS_MODE_DESCR
+Настройка режима комментариев установленная по умолчанию. 

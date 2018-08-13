@@ -1,0 +1,35 @@
+@@ru
+@CORE_MODULE_NAME
+Ядро
+@SAVE
+Сохранить
+@ADD
+Добавить
+@DELETE_SELECTED
+Удалить выбранное
+@SELECT_ALL
+Выбрать все
+@UNSELECT_ALL
+Снять со всех
+@DELETE
+Удалить
+@EDIT
+Правка
+@ENTER_FULL_URL
+Введите полный адрес
+@ENTER_VISIBLE_URL_NAME
+Введите отображаемое имя ссылки
+@ENTER_IMAGE_URL
+Введите адрес изображения
+@ENTER_YOUTUBE_ADDRESS
+Введите адрес ролика на YouTube
+@FUNCTIONS
+Функции
+@CORE_MODULE_CODE
+Код модуля
+@CORE_MODULE_VERSION
+Версия модуля
+@CORE_MODULE_NAMES
+Имя модуля
+@CORE_MODULE_DESCR
+Описание

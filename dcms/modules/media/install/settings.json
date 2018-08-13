@@ -1,0 +1,76 @@
+#Возможность редактировать dirid и указать вручную при создании новой
+[{"id" : "dir_edit",
+ 	"lng" : "DIR_EDIT",
+ 	"type": "bool",
+ 	"default": "1"},
+#Формат сохранения изображений
+{"id": "img_ext",
+ 	"lng":  "IMG_EXT",
+ 	"type": "string",
+ 	"default" : "jpg"},
+#Отображение иконки дирректории
+	{"id" : "dir_icon",
+ 	"lng" : "DIR_ICON",
+ 	"type": "bool",
+ 	"default": "1"},
+#Размер иконки дирректории
+	{"id" : "dir_icon_size",
+ 	"lng" : "DIR_ICON_SIZE",
+ 	"type": "string",
+ 	"default": "300x300"},
+#Размер изображения
+{"id": "img_size",
+ 	"lng":  "IMG_SIZE",
+ 	"type": "string",
+ 	"default" : "900x900"},
+#Функция уменьшения изображения
+{"id": "img_resize_func",
+ 	"lng":  "IMG_RESIZE_FUNC",
+ 	"type": "string",
+ 	"default" : "resize"},
+#Размер превью
+	{"id" : "thumb_size",
+ 	"lng" : "THUMB_SIZE",
+ 	"type": "string",
+ 	"default": "220x220"},
+#Функция уменьшения превью
+{"id": "thumb_resize_func",
+ 	"lng":  "THUMB_RESIZE_FUNC",
+ 	"type": "string",
+ 	"default" : "crop"},
+#Сохранение оригинального изображения
+	{"id" : "save_original",
+ 	"lng" : "SAVE_ORIGINAL",
+ 	"type": "bool",
+ 	"default": "0"},
+#Отображения хлебных крошек
+	{"id" : "breadcrumbs",
+ 	"lng" : "BREADCRUMBS",
+ 	"type": "bool",
+ 	"default": "1"},
+#Шаблон именования id файлов
+	{"id" : "id_naming",
+ 	"lng" : "id_naming",
+ 	"type": "string",
+ 	"default": "#size#-#size_x#x#size_y#-#time#.#ext#"},
+#Шаблон именования названия файлов
+	{"id" : "naming",
+ 	"lng" : "naming",
+ 	"type": "string",
+ 	"default": "#dirnamerus#-#size_x#x#size_y#"},
+#Именование id файлов по имени файла источника
+	{"id" : "fileid_from_source",
+ 	"lng" : "FILEID_FROM_SOURCE",
+ 	"type": "bool",
+ 	"default": "0"},
+#Удалять файл целиком или только из базы
+	{"id" : "full_delete",
+ 	"lng" : "FULL_DELETE",
+ 	"type": "bool",
+ 	"default": "1"},
+#Тема модуля
+	{"id" : "theme",
+ 	"lng" : "THEME",
+ 	"type": "string",
+ 	"default": "usefull"}
+]

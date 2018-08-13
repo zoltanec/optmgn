@@ -1,0 +1,2 @@
+Startup exception:
+<{$e->getMessage()}>

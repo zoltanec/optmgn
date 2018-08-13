@@ -1,0 +1,6 @@
+<model name="users">
+ <row name="uid" />
+ <row name="username" />
+ <row name="password" />
+ <key name="uid" type="primary" incremented="1" />
+</model>

@@ -1,0 +1,9 @@
+@@en
+@TICKETS_REQUEST_RECIEVED
+Your support request recieved. You can always access your ticket information by following link:
+
+%link%
+
+ATTENTION! DO NOT EDIT MESSAGE HEADER!
+@TICKER_REQUEST_CLOSED
+Your ticked has been closed.

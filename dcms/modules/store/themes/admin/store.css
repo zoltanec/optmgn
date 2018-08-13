@@ -1,0 +1,109 @@
+.packet_item_image{
+	padding:0px !important;
+	text-align: center;
+	width: 60px;
+}
+.packet_item_name{
+	width:50%;
+}
+.packet_item_image img{
+	width:100px;
+}
+.packet_content table{
+	margin-top:10px !important;
+	margin-bottom:20px !important;
+}
+.packet_content table tbody tr{
+	background:none !important;
+}
+.store_order_packet {
+	width: 98%;
+	margin: 0 auto;
+}
+.cms_list thead tr th{
+	text-align:left;
+	padding-left:10px;
+}
+.nid{
+	width:2%;
+}
+.order_name{
+	width:10%;
+}
+	.order_adress{
+	width:20%;
+	}
+	.order_phone{
+	width:15%;
+	}
+	.order{
+	width:50%;
+	}
+	span.big{
+		font-size:1.4em;
+	}
+	.order_status {
+		white-space: nowrap;
+		text-decoration: none;
+	}
+	.order_status_passed {
+		color: #777;
+		font-size: 80%;
+	}
+	.order_status_0 {
+		border: 3px solid red !important;
+		border-collapse: separate;
+	}
+	.order_status_1.order_payment_1 {
+		border: 3px solid green !important;
+		border-collapse: separate;
+	}
+	.order_status_3 {
+		border: 3px solid green !important;
+		border-collapse: separate;
+	}
+
+.order_status_1.order_payment_3 {
+	font-size: 60%;
+	opacity:0.5;
+}
+
+.order_change_status A {
+	display:block;
+}
+.order_status_3 .order_set_1,
+.order_status_1 .order_set_1 {
+	display: none;
+}
+.order_status_1.order_payment_3 .order_set_5 {
+	display: none;
+}
+
+.order_change_status .order_set_0,
+.order_change_status .order_set_2,
+.order_change_status .order_set_3,
+.order_change_status .order_set_4 {
+	display: none;
+}
+UL.store_order_statuses_list {
+	overflow: auto;
+}
+UL.store_order_statuses_list LI {
+	display: block;
+	float: left;
+	margin-right: 20px;
+}
+.packet_item_descr {
+	font-size: 70%;
+}
+LI[data-type="tabhead"] {
+	cursor: pointer;
+	text-decoration: underline;
+}
+.active[data-type="tabhead"] {
+	font-weight: bold;
+	text-decoration: none;
+}
+.store_orders_count {
+	font-weight: bold;
+}

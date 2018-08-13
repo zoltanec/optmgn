@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>dObject - базовый класс для моделей в движке</title>
+ <link href="../style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<p>Класс dObject нужен для сведения в одно места кода связанного с управлением работы объектной модели внутри системы.
+ Он позволяет удобнее использовать возможности заложенные в языке, но не доведенные до ума ( set, get для свойств). Так же dObject нужен для 
+ центрального управления кэшированием объектов. Класс является абстрактным, и создание его экземпляров невозможно.</p>
+<h2>Абстрактные функции класса</h2>
+<p>Для нормальной работы класса необходимо переопределить 3 абстрактные функции: </p>
+	<ul>
+		<li>protected function object_id()</li>
+		<li>protected function __save()</li>
+		<li>static protected function __fetch($id);</li>
+	</ul>
+<p>Классы потомки <b>НЕ</b> должны переопределять следующие функции ( по крайней мере не желательно их переопределение):</p>
+<ul>
+	<li>__get();</li>
+	<li>__set();</li>
+	<li>__callStatic();</li>
+	<li>__call();</li>
+	<li>save();</li>
+</ul>
+<h2>Переменные класса</h2>
+Класс позволяет использовать переменные 
+
+
+<h2>Использование setter'ов и getter'ов</h2>
+Использование класса dObject позволяет обращатся к функциям как к свойствам объектов. Например:
+<code>
+<b>class</b> Car <b>extends</b> dObject {
+	<b>protected function</b> object_id() {
+		<b>return</b> <s>'car-id-'</s>.<i>$this</i>->carid;
+	}
+	<b>protected function</b> __save() {
+		<b>return</b> <i>$this</i>->carid;
+	}
+	<b>static protected function</b> __fetch(<i>$id</i>) {
+		...
+	}
+	<b>function</b> __get_average_speed() {
+		<b>return</b> <i>$this</i>->total_way / $this->total_time;
+	}
+}
+<q>//создаем новый объект класса</q>
+<i>$mustang</i> = new Car();
+echo <i>$mustang</i>->average_speed;
+</code>
+<h2>Кэширование экземпляров объектов</h2>
+<p>Для того чтобы закэшировать объект целиком необходимо определить функция __fetch($id) и указать статическое свойство $cacheself. Время кэширования задается в секундах.</p>
+<code>
+<b>class</b> Car <b>extends</b> dObject {
+	<q>//наш объект будет кэшироватся 100 секунд</q>
+	<b>protected static</b> <i>$cacheself</i> = 100;
+	<b>static protected function</b> __fetch(<i>$id</i>) {
+		... здесь мы выполняем некие действия и получаем новый объект типа Car
+		<b>return</b> <i>$tmpCar</i>;
+	} 
+}
+<q>//теперь воспользуемся нашим объектом</q>
+<i>$car</i> = dObject::Car(<i>1</i>);
+</code>
+В данном случае, используя переопределенный метод __callStatic будет выполнена проверка кэша, в котором будет искаться объект типа Car с ID 1, если объект не найден то будет вызвана 
+функция __fetch() класса Car. При этом результат этой функции (объект Car) будет закэширован на 100 секунд. 
+<h2>Кэширование генерируемых свойств объектов</h2>
+Если у объекта есть генерируемые свойства (__get_propertyX()), то результаты их генерации можно закэшировать на определенное время.
+<h2>Множественное указание свойств объектов</h2>
+Множественное указание свойств позволяет запихнуть в одну строку изменение нескольких свойств объекта. Выглядит это примерно так:
+<code>
+<i>$object</i>->property1(<i>$var1</i>)->property2(<i>$var2</i>)->property3(<i>$var3</i>)->property4(<i>$var4</i>);
+</code>
+</body>
+</html>

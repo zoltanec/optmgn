@@ -1,0 +1,50 @@
+table#vote tr.header td {
+background:url("../images/main.menu.inact.png") repeat-x scroll left center transparent;
+color:#FFFFFF;
+font-size:80%;
+font-weight:bold;
+height:27px;
+text-align:center;
+text-shadow:1px 1px 1px #333333;
+}
+#poll-container {
+color:#ffffff;
+}
+.graph {
+  width: auto;
+  position: relative;
+  right: 0px;
+  overflow: hidden;
+}
+.bar-title {
+  position: relative;
+  float: left;
+  width: 122px;
+  line-height: 20px;
+  margin-right: 17px;
+  font-weight: bold;
+  text-align: left;
+  padding-left:20px;
+}
+.bar-container {
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 10px;
+  margin: 0px 0px 15px;
+}
+
+.bar-container div {
+  background-color:#cc4400;
+  height: 20px;
+}
+.bar-container strong {
+  position: absolute;
+  right: -32px;
+  top: 0px;
+  overflow: hidden;
+}
+#opt {
+background-color:#193E64;
+border:none;
+}

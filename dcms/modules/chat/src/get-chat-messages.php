@@ -1,0 +1,1 @@
+<?phptry {	$chat = D_Core_Factory::Chat(D::$req->intID());} catch (Exception $e) {	D::$Tpl->RedirectOrJSON('~/', array('status' => 'ERROR_NO_SUCH_CHAT_ROOM'));}$messages = $chat->read(D::$user->uid, D::$req->int('last_msgid'));// парсим кодыforeach($messages AS &$message) {	$message['message'] = dText::parseSmiles($message['message']);}D::$Tpl->PrintJSON($messages);?>

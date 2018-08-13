@@ -46,7 +46,7 @@
 				<div class="goods-frame__list-sml">
 					<div class="product-item-detail-slider-controls-block" id="bx_117848907_1795201_slider_cont_1795203" style="display: ;">
 						<{foreach name=pictures item=picture from=$prod->pictures}>
-							<div class="goods-frame__item-sml active" data-entity="slider-control" data-value="1795203_9675931">
+							<div class="goods-frame__item-sml <{if $picture@index eq 0}>active<{/if}>" data-entity="slider-control" data-value="1795203_9675931">
 								<img class="goods-frame__image-sml" src="http://sportlandshop.ru/content/media/thumbs/product<{$prod->prod_id}>/<{$picture->fileid}>" alt="<{$prod->prod_name}>">
 							</div>
 						<{/foreach}>
@@ -72,16 +72,17 @@
 					</div>
 					<!-- Цена за коробку -->
 					<div class="goods-price__item">
+
 						<{if !$prod->fields['wholesale-discount-price']->content}>
 							<div class="goods-price__cost price">
-								<span class="price__value" id="bx_117848907_1795201_urraa_price" style="font-size: 28px;"><{$boxQt * $prod->fields['wholesale-price']->content}></span> руб.
+								<span class="price__value" id="bx_117848907_1795201_urraa_price" style="font-size: 28px;"><{$boxQt * $prod->getDefPrice()}></span> руб.
 							</div>
 						<{else}>
 							<div class="goods-price__cost price">
-								<span class="price__value" id="bx_117848907_1795201_urraa_price" style="font-size: 28px;"><{$boxQt * $prod->fields['wholesale-discount-price']->content}></span> руб.
+								<span class="price__value" id="bx_117848907_1795201_urraa_price" style="font-size: 28px;"><{$boxQt * $prod->getCurrentPrice()}></span> руб.
 							</div>
 							<div class="goods-price__cost goods-price__cost_old price price_old">
-								<span class="price__value" id="bx_117848907_1795201_urraa_price_old"><{$boxQt * $prod->fields['wholesale-price']->content}></span> руб.
+								<span class="price__value" id="bx_117848907_1795201_urraa_price_old"><{$boxQt * $prod->getDefPrice()}></span> руб.
 							</div>
 						<{/if}>
 						<div class="goods-price__for">Цена за кор.</div>
@@ -90,14 +91,14 @@
 					<div class="goods-price__item">
 						<{if !$prod->fields['wholesale-discount-price']->content}>
 							<div class="goods-price__cost goods-price__cost_single price">
-								<span class="price__value" id="bx_117848907_1795201_urraa_price_piece"><{$prod->fields['wholesale-price']->content}></span> руб.
+								<span class="price__value" id="bx_117848907_1795201_urraa_price_piece"><{$prod->getDefPrice()}></span> руб.
 							</div>
 						<{else}>
 							<div class="goods-price__cost goods-price__cost_single price">
-								<span class="price__value" id="bx_117848907_1795201_urraa_price_piece"><{$prod->fields['wholesale-discount-price']->content}></span> руб.
+								<span class="price__value" id="bx_117848907_1795201_urraa_price_piece"><{$prod->getCurrentPrice()}></span> руб.
 							</div>
 							<div class="goods-price__cost goods-price__cost_old-single price price_old">
-								<span class="price__value" id="bx_117848907_1795201_urraa_price_piece_old"><{$prod->fields['wholesale-price']->content}></span> руб.
+								<span class="price__value" id="bx_117848907_1795201_urraa_price_piece_old"><{$prod->getDefPrice()}></span> руб.
 							</div>
 						<{/if}>
 						<div class="goods-price__for">Цена за пару</div>
@@ -118,7 +119,7 @@
 					</span>
 				</div>
 			</div>
-			
+			<{if isset($prod->fields['wholesale-size'])}>
 			<div class="l-goods-i__block">
 				<div class="l-goods-i__title">Состав коробки</div>
 				<div class="goods-box">
@@ -144,7 +145,7 @@
 					</table>
 				</div>
 			</div>
-			
+			<{/if}>
 			<!--noindex-->
 			<div class="l-goods-i__block l-goods-i__cart-put-in product_actions" data-prod-id="<{$prod->prod_id}>" data-entity="main-button-container">
 				<div id="busket-actions">
@@ -245,16 +246,20 @@
 		<div class="col-item l-goods-i__tabs">
 			<div class="tabs-goods">
 				<ul class="tabs-goods__list">
-					<li class="tabs-goods__item active"><a class="tabs-goods__link" href="#home" data-toggle="tab">Характеристики</a></li>
-					<li class="tabs-goods__item"><a class="tabs-goods__link" href="#profile" data-toggle="tab">Описание</a></li>
+					<li class="tabs-goods__item active" data-id="home">
+						<a class="tabs-goods__link" href="#" data-toggle="tab">Характеристики</a>
+					</li>
+					<li class="tabs-goods__item" data-id="profile">
+						<a class="tabs-goods__link" href="#" data-toggle="tab">Описание</a>
+					</li>
 				</ul>
 
 				<div class="tabs-goods__content">
-					<div class="tabs-goods__panel active" id="home">
+					<div class="tabs-goods__panel tab-pane fade in  active" id="home">
 						<{$prod->descr}>
 					</div>
-					<div class="tabs-goods__panel" id="profile">
-					
+					<div class="tabs-goods__panel tab-pane fade" id="profile">
+
 					</div>
 				</div>
 			</div>
