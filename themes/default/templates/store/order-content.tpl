@@ -1,3 +1,4 @@
+
 <input type="hidden" id="basket__page">
 <tr class="cart-table__tr cart-table_custom_line"
     data-prod-id="<{$prod->prod_id}>"
@@ -93,20 +94,20 @@
         <div class="cart-table__title cart-table__title_inline">Сумма:</div>
         <div class="cart-table-price__type">&nbsp;</div>
 
-            <{if $prod->getCurrentPrice()}>
+            <{if $prod->fields['wholesale-discount-price']->content}>
                 <div class="cart-table-total__cost price">
-                    <span class="price__value  multiply-price" data-price="
+                    <span class="price__value  multiply-price current_price" data-status=" price-without-sale" data-price="
                      <{$prod->getBoxQt() * $prod->getCurrentPrice()}>">
                         <{$prod->getBoxQt() * $prod->getCurrentPrice()}>
                     </span> руб.
                 </div>
                 <div class="cart-table-price__cost cart-table-price__cost_old price price_old">
                     <span class="price__value  multiply-price"  data-price="
-                <{$prod->getBoxQt() * $prod->getDefPrice()}>"><{$prod->getBoxQt() * $prod->getDefPrice()}></span> руб.
+                <{$prod->getBoxQt() * $prod->getDefPrice()}>"><{$prod->getBoxQt() * $prod->getDefPrice()}></span>руб.
                 </div>
             <{else}>
                 <div class="cart-table-total__cost price">
-                    <span class="price__value  multiply-price" data-price="
+                    <span class="price__value  multiply-price current_price" data-status="price-without-sale" data-price="
                    <{$prod->getBoxQt() * $prod->getCurrentPrice()}> ">
                         <{$prod->getBoxQt() * $prod->getCurrentPrice()}>
                     </span> руб.

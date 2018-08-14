@@ -168,7 +168,8 @@ if (count($_from) > 0){
                         </div>
 
                         <div class="tabs-cart__item  wrap_li tabs-cart__item-delay  ">
-                            <a class="tabs-cart__link" href="#"> 
+
+                            <a class="tabs-cart__link" href="#">
                                 Избранные (<span id="basket_delay_product-cnt">0</span>)
                             </a>
                         </div>

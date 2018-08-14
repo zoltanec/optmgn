@@ -283,6 +283,37 @@ class Store_Cart extends D_Core_Object implements Payments_Payable {
     	return $_SESSION['cart'];
     }
 
+	//!get price of all orders and show the color
+	static function getColor(){
+		$prod = Store_Cart::getCart();
+		$price = 0;
+		$typeOfOrders = array();
+		foreach($prod as $product){
+			foreach($product as $data){
+				$quality = $data['quantity'];
+				$price += D_Core_Factory::Store_Product($data['prod_id'])->getCurrentPrice()* D_Core_Factory::Store_Product($data['prod_id'])->getBoxQt()*$quality;
+			}
+
+		}
+		if($price < 20000){
+			$typeOfOrders['color'] = 'Белая';
+			$typeOfOrders['price'] = $price;
+			return $typeOfOrders;
+		}else if($price < 80000){
+			$typeOfOrders['color'] = 'Зелёная';
+			$typeOfOrders['price'] = $price*0.95;
+			return $typeOfOrders;
+		}else if($price <200000){
+			$typeOfOrders['color'] = 'Синяя';
+			$typeOfOrders['price'] = $price*0.93;
+			return $typeOfOrders;
+		}else{
+			$typeOfOrders['color'] = 'Красная';
+			$typeOfOrders['price'] = $price*0.9;
+			return $typeOfOrders;
+		}
+	}
+
     //!Получить сумму стоимости продуктов в пакете
     static function getPackSum($pack_id){
     	$total_cost = $total_quantity=0;

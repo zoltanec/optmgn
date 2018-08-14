@@ -30,8 +30,8 @@
                         <div class="system-message notetext info-block info-block_info">
                             <div class="text">
                                 <p class="info-block__string">
-                                    <b class="text text--bold">Тип Вашей цены - <span class="price-type"><{$config['store.discounts']['20 000']['title']}></span>.</b></p>
-                                <p class="info-block__string">Общая сумма в Вашей корзине: <span class="text text--orange"><{$cart_total.total_cost}> руб.</span></p>
+                                    <b class="text text--bold">Тип Вашей цены - <span class="price-type"><{$typeOfOrders['color']}></span>.</b></p>
+                                <p class="info-block__string">Общая сумма в Вашей корзине: <span class="text text--orange all-orders-prices-sum"><{$typeOfOrders['price']}> </span>руб.</p>
                             </div>
                         </div>
                         <div class="tabs-cart__content l-cart__tabs-content">
@@ -50,6 +50,7 @@
                                     </tr>
                                     <{foreach item=pack key=pack_id name=pack from=$cart}>
                                         <{assign var=pack_summ value=0}>
+										<{assign var=color value=$color}>
                                         <{foreach name=items item=data key=hash from=$pack}>
                                             <{if $data.visible}>
                                                 <{assign var=prod_id value=$data.prod_id}>
@@ -166,4 +167,3 @@
 		</div>
 	</div>
 <{/if}>
-

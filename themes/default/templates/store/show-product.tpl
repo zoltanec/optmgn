@@ -65,7 +65,7 @@
 			<div class="l-goods-i__block">
 				<div class="goods-price">
 					<div class="goods-price__offer">
-						Оптом по <{$boxQt}> шт.
+						Оптом по <{$prod->getBoxQt()}> шт.
 						<span class="goods-price__hint">
 							<span class="hint" data-toggle="tooltip" title="Скидки действуют при покупке на определенную сумму"></span>
 							</span>
@@ -75,14 +75,14 @@
 
 						<{if !$prod->fields['wholesale-discount-price']->content}>
 							<div class="goods-price__cost price">
-								<span class="price__value" id="bx_117848907_1795201_urraa_price" style="font-size: 28px;"><{$boxQt * $prod->getDefPrice()}></span> руб.
+								<span class="price__value" id="bx_117848907_1795201_urraa_price" style="font-size: 28px;"><{$prod->getBoxQt() * $prod->getDefPrice()}></span> руб.
 							</div>
 						<{else}>
 							<div class="goods-price__cost price">
-								<span class="price__value" id="bx_117848907_1795201_urraa_price" style="font-size: 28px;"><{$boxQt * $prod->getCurrentPrice()}></span> руб.
+								<span class="price__value" id="bx_117848907_1795201_urraa_price" style="font-size: 28px;"><{$prod->getBoxQt() * $prod->getCurrentPrice()}></span> руб.
 							</div>
 							<div class="goods-price__cost goods-price__cost_old price price_old">
-								<span class="price__value" id="bx_117848907_1795201_urraa_price_old"><{$boxQt * $prod->getDefPrice()}></span> руб.
+								<span class="price__value" id="bx_117848907_1795201_urraa_price_old"><{$prod->getBoxQt() * $prod->getDefPrice()}></span> руб.
 							</div>
 						<{/if}>
 						<div class="goods-price__for">Цена за кор.</div>

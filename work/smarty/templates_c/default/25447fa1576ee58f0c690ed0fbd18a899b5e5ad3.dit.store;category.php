@@ -160,10 +160,10 @@ if (count($_from) > 0){
 </div>
 										<?php if ($_smarty_tpl->getVariable('prod')->value->fields['wholesale-discount-price']->content){?>
 											<div class="goods-card__price price">
-											от <span class="price__value" id=""><?php echo $_smarty_tpl->getVariable('prod')->value->getDefPrice()?>
+											от <span class="price__value" id=""><?php echo $_smarty_tpl->getVariable('prod')->value->getCurrentPrice()?>
 </span> руб./шт</div>
                                             <div class="goods-card__price_old price price_old">
-											от <span class="price__value" id=""></span><?php echo $_smarty_tpl->getVariable('prod')->value->getCurrentPrice()?>
+											от <span class="price__value" id=""></span><?php echo $_smarty_tpl->getVariable('prod')->value->getDefPrice()?>
  руб./шт</div>
 										<?php }else{ ?>
 											<div class="goods-card__price price">

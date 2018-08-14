@@ -80,10 +80,8 @@ class Store_Product extends D_Core_Object {
     /*Количество в одной коробке*/
     public function getBoxQt() {
         $boxQt = false;
-
         if (isset($this->fields['wholesale-size']) && $this->fields['wholesale-size']->content) {
             $sizes = unserialize($this->fields['wholesale-size']->content);
-
             if ($sizes) {
                 foreach ($sizes as $cols) {
                     if ($cols['checked'] && $cols['value']) {
