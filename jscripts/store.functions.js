@@ -112,7 +112,19 @@
 				}
 				quantityInput.val(quantity);
 
-				return changeValue();
+				if($(this).hasClass("put__arrow_basket")){
+					var product_price = $(this).parents(".cart-table__tr").find(".multiply-price");
+					var quant = $(this).parent().find('input[name=quantity]').val();
+					product_price.each(function(){
+						var static_price = $(this).attr('data-price');
+						var	p = static_price*quant;
+						if(p!=0){
+							$(this).text(p);
+						}
+					});
+					return changeValue();
+				}
+
 			});
 
 			//delete a product

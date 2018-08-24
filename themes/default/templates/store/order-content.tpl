@@ -1,3 +1,4 @@
+<input type="hidden" id="basket__page">
 <tr class="cart-item cart-table__tr cart-table_custom_line"
     data-prod-id="<{$prod->prod_id}>"
 	data-current-price="<{$prod->getCurrentPrice()}>"
@@ -111,9 +112,6 @@
 		<{/if}>
     </td>
     <td class="cart-table__td cart-table__td--actions">
-        <div class="goods-frame__share goods-share">
-            <div class="goods-share__item goods-share__item_delay" title="В избранное" data-id=""></div>
-        </div>
         <a class="remove cart-table__close icon icon-cross" href="#remove" title="Удалить">
             <i></i>
         </a>

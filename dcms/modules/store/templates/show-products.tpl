@@ -34,5 +34,4 @@
 			<a class="blue-button" href="<{$me.www}>/store/add-to-cart/prodid_<{$prod->prod_id}>"><b><em>Купить</em></b></a>
 			</div>
         </div>
-
 <{/foreach}>

@@ -107,7 +107,7 @@ class Store_Product extends D_Core_Object {
 
         return $boxQt;
    }
-    
+
     /**
 	 * Get product short name
      */

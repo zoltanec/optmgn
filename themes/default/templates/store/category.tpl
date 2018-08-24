@@ -1,3 +1,4 @@
+<input type="hidden" id="category_page">
 <div class="container l-goods-l">
 	<div class="row l-goods-l__header">
 		<div class="col-item"><h1 class="title-h1">Мужские кроссовки</h1></div>

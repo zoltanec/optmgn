@@ -25150,7 +25150,7 @@ div.reviews-code-box ol li {
 	height: auto;
 }
 
-.basket_wrapp .price__value {
+.basket_wrapp {
 	color: #383838;
 	font-weight: 700;
 }

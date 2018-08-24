@@ -70,4 +70,17 @@ $T['fields'] = $T['category']->fields;
 D::$tpl->title = $T['category']->name;
 D::$tpl->description = $T['category']->descr;
 if($T['category']->custom_tpl) D::$tpl->show('categories/'.$T['category']->category_code);
+
+foreach($T['products'] as $prod){
+    if(isset($prod->fields['wholesale-hit']->content)){
+        $hit[] = $prod;
+    }else if(isset($prod->fields['wholesale-new']->content)){
+        $new[] = $prod;
+    }else if(isset($prod->fields['wholesale-sale'])){
+        $sale[] = $prod;
+    }
+}
+$T['hit'] = $hit;
+$T['new'] = $new;
+$T['sale'] = $sale;
 ?>

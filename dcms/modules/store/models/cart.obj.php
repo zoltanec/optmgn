@@ -52,7 +52,7 @@ class Store_Cart extends D_Core_Object implements Payments_Payable {
 			$this->save();
 		}
 	}
-
+	
 	public function setOrderStatus($new_status) {
 		if($new_status == 1) {
 			$sms = D::$i18n->translate('STORE_YOUR_ORDER_APPROVED');
