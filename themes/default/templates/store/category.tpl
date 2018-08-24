@@ -105,7 +105,7 @@
 									data-entity="image-wrapper">
 										<div class="goods-card__img-wrap">
 											<img class="goods-card__img" 
-												src="http://sportlandshop.ru/content/media/thumbs/product<{$prod->prod_id}>/<{$prod->picture->fileid}>" 
+												src="http://sportlandshop.ru/content/media/thumbs/product<{$prod->prod_id}>/<{$prod->picture->fileid}>"
 												alt="<{$prod->prod_name}>" >
 											<div class="goods-labels goods-card__labels">
 												<div class="goods-labels__list">
@@ -122,28 +122,23 @@
 											<{/if}>
 										</div>
 										<div class="goods-card__name"><{$prod->prod_name}></div>
-										<{if $prod->fields['wholesale-discount-price']->content}>
-											<div class="goods-card__price price">
-											от <span class="price__value" id=""><{$prod->fields['wholesale-discount-price']->content}></span> руб./шт</div>
-                                            <div class="goods-card__price_old price price_old">
-											от <span class="price__value" id=""></span><{$prod->fields['wholesale-price']->content}> руб./шт</div>
-										<{else}>
-											<div class="goods-card__price price">
-											от <span class="price__value" id=""><{$prod->fields['wholesale-price']->content}></span> руб./шт</div>
-										<{/if}>
+										<div class="goods-card__price price">
+											от <span class="price__value"><{$prod->getCurrentPrice()}></span> руб./шт</div>
+											<{if $prod->getDefPrice()}>
+												<div class="goods-card__price_old price price_old">
+													от <span class="price__value"><{$prod->getDefPrice()}></span> руб./шт
+												</div>
+											<{/if}>
                                         <div class="goods-card__wholesale">
                                             оптом по
                                             <span class="goods-card__wholesale-value"><{$prod->getBoxQt()}></span> шт.
-                                            <{if $prod->fields['wholesale-discount-price']->content}>
-                                                <div class="goods-card__wholesale-price price">от
-                                                    <span class="price__value" id=""><{10* $prod->fields['wholesale-price']->content}></span> руб./уп.
-                                                </div>
-                                                <div class="goods-card__wholesale_old price price_old">от
-                                                    <span class="price__value" id=""><{10 * $prod->fields['wholesale-price']->content}></span> руб./уп.
-                                                </div>
-                                            <{else}>
-                                                <div class="goods-card__price price">
-                                                от <span class="price__value" id=""><{10 * $prod->fields['wholesale-price']->content}></span> руб./шт</div>
+											<div class="goods-card__wholesale-price price">от
+												<span class="price__value" id=""><{$prod->getBoxQt() * $prod->getCurrentPrice()}></span> руб./уп.
+											</div>
+											<{if $prod->getDefPrice()}>
+												<div class="goods-card__wholesale_old price price_old">от
+													<span class="price__value" id=""><{$prod->getBoxQt() * $prod->getDefPrice()}></span> руб./уп.
+												</div>
                                             <{/if}>
                                         </div>
 									</a>
@@ -169,7 +164,7 @@
                                                         to-cart">В корзину</div>
                                                 </div>
                                             </div>
-                                            <a class="btn btn_primary btn_size_xs put__btn_in_basket" style="display:none" href="<{$me.www}>/store/order" rel="nofollow"><i class="icon icon-check"></i>В корзине</a>
+                                            <a class="btn btn_primary btn_size_xs put__btn_in_basket" style="display:none" href=",http://sportlandshop.ru/store/order" rel="nofollow"><i class="icon icon-check"></i>В корзине</a>
                                         </div>
                                     </div>
                                 </div>

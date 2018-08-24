@@ -19402,6 +19402,75 @@ td.lp-service__table-wide {
 	font-size: 12px;
 }
 
+.basket_wrapp .module-cart table thead td.name-th {
+	text-align: left;
+}
+
+.basket_wrapp .module-cart table thead td {
+	padding: 8px;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.basket_wrapp .module-cart table tr.row-service td {
+	background-color: #F7F7F7;
+	padding: 30px 10px !important;
+}
+
+.basket_wrapp tr.basket_note td{
+	padding: 0 15px 20px 0 !important;
+	border-top: 2px solid rgba(255, 0, 0, 0) !important;
+}
+
+.basket_wrapp .module-cart .system-message{
+	padding: 10px 10px 5px 50px;
+	background-position: 15px 50%;
+}
+
+.basket_wrapp .order-total_all td{
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.basket_wrapp .info-td_economy{
+	text-align: left;
+}
+
+.basket_wrapp .order-total__td .info-label_economy{
+	margin: 4px 0;
+	background-color: #fad000;
+	cursor: default;
+	display: inline-block;
+	padding: 0 10px;
+	color: #383838;
+	font-size: 14px;
+	line-height: 22px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+.basket_wrapp .order-total__td .info-label_economy_title{
+	margin-right: -20px;
+	padding-right: 20px;
+}
+.basket_wrapp .order-total__td .info-label_economy_value{
+	padding-left: 0;
+}
+
+.basket_wrapp .order-total__free-delivery{
+	margin:-19px 0 15px;
+	text-align: right;
+	color: #e94a3b;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+.basket_wrapp .goods-share__item.__active  {
+	color: #ff9601;
+	background-color: transparent;
+}
+
 .header-cart-empty-line {
 	width: 408px;
 }
@@ -25175,6 +25244,10 @@ body {
 	padding-left: 0;
 }
 
+.basket_wrapp .order-total  table {
+	float: right;
+}
+
 .basket_wrapp .l-cart__coupon.input_coupon {
 	padding-right: 0;
 }
@@ -26029,12 +26102,3 @@ form#profile_data_edit_form .segment {
         display: none;
     }
 }
-/* End */
-/* /bitrix/js/oorraa/phoneinput/css/jquery.phoneinput.css?149787444528373 */
-/* /local/templates/main/css/style.css?1530786143554807 */
-/* /local/templates/main/css_static/main.css?1504782220110 */
-/* /local/templates/main/css_static/crutches.css?15285439181562 */
-/* /local/templates/main/components/bitrix/news.list/toppers/style.css?150425236971 */
-/* /local/components/oorraa/geo.location/templates/.default/style.css?15306224625021 */
-/* /local/templates/main/components/bitrix/menu/catalog_simple/style.css?1524914029119 */
-/* /local/components/oorraa/geo.location/templates/mobile/style.css?15306286864800 */

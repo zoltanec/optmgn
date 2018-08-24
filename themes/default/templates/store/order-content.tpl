@@ -1,15 +1,17 @@
-
-<input type="hidden" id="basket__page">
-<tr class="cart-table__tr cart-table_custom_line"
+<tr class="cart-item cart-table__tr cart-table_custom_line"
     data-prod-id="<{$prod->prod_id}>"
+	data-current-price="<{$prod->getCurrentPrice()}>"
+	data-current-box-price="<{$prod->getBoxQt() * $prod->getCurrentPrice()}>"
     data-hash="<{$hash}>">
     <td class="cart-table__td cart-table-img">
-        <a class="cart-table-img__link" href="">
+        <a class="cart-table-img__link" href="<{$me.www}>/store/show-product/product_<{$prod->prod_id}>">
             <img class="cart-table-img__img" src="http://sportlandshop.ru/content/media/product<{$prod->prod_id}>/<{$prod->picture->fileid}>" alt="<{$prod->prod_name}>">
         </a>
     </td>
     <td class="cart-table__td cart-table-name">
-        <a class="cart-table-name__link" href=""><{$prod->prod_name}></a>
+        <a class="cart-table-name__link" href="<{$me.www}>/store/show-product/product_<{$prod->prod_id}>">
+			<{$prod->prod_name}>
+		</a>
         <div class="cart-table-props">
             <dl class="cart-table-props__dl">
                 <dt class="cart-table-props__dt">Бренд:</dt>
@@ -40,39 +42,35 @@
     <!-- за шт. -->
     <td class="cart-table__td cart-table-price">
         <div class="cart-table__title cart-table__title_inline">Цена за ед.:</div>
-        <div class="cart-table-price__type"><{$config['store.discounts']['20 000']['title']}></div>
-        <div class="cart-table-price__cost price">
-            <span class="price__value">
-            <{if $prod->fields['wholesale-discount-price']->content}>
-                <{$prod->getCurrentPrice()}>
-            <{else}>
-                <{$prod->getDefPrice()}>
-            <{/if}></span> руб.</div>
-        <div class="cart-table-price__cost cart-table-price__cost_old price price_old">
-            <span class="price__value">
-                <{if $prod->fields['wholesale-discount-price']->content}>
-                    <{$prod->getDefPrice()}><span>руб.</span>
-                <{/if}>
-            </span>
-        </div>
+        <div class="cart-table-price__type price-type"><{$bulkDiscount.title}></div>
+			<div class="current-price cart-table-price__cost price">
+				<span class="price__value">
+					<{$prod->getBulkDiscountPrice()}>
+				</span> руб.
+			</div>
+			<{if $bulkDiscount.cff < 1}>
+				<div class="old-price cart-table-price__cost cart-table-price__cost_old price price_old price_old_basket">
+					<span class="price__value"><{$prod->getCurrentPrice()}></span> руб.
+				</div>
+			<{/if}>
     </td>
     <!-- за кор./уп. -->
     <td class="cart-table__td cart-table-price">
         <div class="cart-table__title cart-table__title_inline">Цена за кор.:</div>
-        <div class="cart-table-price__type"><{$config['store.discounts']['20 000']['title']}></div>
+        <div class="cart-table-price__type price-type"><{$bulkDiscount.title}></div>
         
-        <div class="cart-table-price__cost price">
+        <div class="box-price cart-table-price__cost price">
             <span class="price__value">
-                <{if $prod->fields['wholesale-discount-price']->content}>
-                    <{$prod->getBoxQt() * $prod->getCurrentPrice()}>
-                <{else}>
-                    <{$prod->getBoxQt() * $prod->getDefPrice()}>
-                <{/if}>
+                <{$prod->getBoxQt() * $prod->getBulkDiscountPrice()}>
             </span> руб.
         </div>
-        
-        <input type="hidden" name="item_price" value="7977.2">
-        <input type="hidden" name="item_summ" value="39886">
+		<{if $bulkDiscount.cff < 1}>
+			<div class="box-price-old cart-table-price__cost cart-table-price__cost_old price price_old price_old_basket_box">
+				<span class="price__value">
+					<{$prod->getBoxQt() * $prod->getCurrentPrice()}>
+				</span> руб.
+			</div>
+		<{/if}>
     </td>
 
     <td class="cart-table__td cart-table-put">
@@ -92,32 +90,25 @@
 
     <td class="cart-table__td cart-table-total">
         <div class="cart-table__title cart-table__title_inline">Сумма:</div>
-        <div class="cart-table-price__type">&nbsp;</div>
-
-            <{if $prod->fields['wholesale-discount-price']->content}>
-                <div class="cart-table-total__cost price">
-                    <span class="price__value  multiply-price current_price" data-status=" price-without-sale" data-price="
-                     <{$prod->getBoxQt() * $prod->getCurrentPrice()}>">
-                        <{$prod->getBoxQt() * $prod->getCurrentPrice()}>
-                    </span> руб.
-                </div>
-                <div class="cart-table-price__cost cart-table-price__cost_old price price_old">
-                    <span class="price__value  multiply-price"  data-price="
-                <{$prod->getBoxQt() * $prod->getDefPrice()}>"><{$prod->getBoxQt() * $prod->getDefPrice()}></span>руб.
-                </div>
-            <{else}>
-                <div class="cart-table-total__cost price">
-                    <span class="price__value  multiply-price current_price" data-status="price-without-sale" data-price="
-                   <{$prod->getBoxQt() * $prod->getCurrentPrice()}> ">
-                        <{$prod->getBoxQt() * $prod->getCurrentPrice()}>
-                    </span> руб.
-                </div>
-            <{/if}>
-        <div class="cart-table-price__info info-label info-label_info">
-            Экономия 1&nbsp;450.40 руб.
-        </div>
-
-        <input type="hidden" name="price_discount" value="">
+		<div class="product-sum price">
+			<span class="price__value multiply-price" 
+				data-status=" price-without-sale" 
+				data-price="<{$prod->getBoxQt() * $prod->getBulkDiscountPrice()}>">
+					<{$data.quantity * $prod->getBoxQt() * $prod->getBulkDiscountPrice()}>
+			</span> руб.
+		</div>
+		<{if $bulkDiscount.cff < 1}>
+			<div class="product-sum-old cart-table-price__cost cart-table-price__cost_old price price_old">
+				<span class="price__value multiply-price"
+					data-status="price-without-sale"
+					data-price="<{$prod->getBoxQt() * $prod->getCurrentPrice()}>">
+						<{$data.quantity * $prod->getBoxQt() * $prod->getCurrentPrice()}>
+				</span> руб.
+			</div>
+			<div class="prod-economy cart-table-price__info info-label info-label_info">
+				Экономия <span><{$data.quantity * $prod->getBoxQt() * ($prod->getCurrentPrice() - $prod->getBulkDiscountPrice())}><span> руб.
+			</div>
+		<{/if}>
     </td>
     <td class="cart-table__td cart-table__td--actions">
         <div class="goods-frame__share goods-share">

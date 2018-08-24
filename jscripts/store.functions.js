@@ -16,12 +16,12 @@
 
 		self.shift=$('div.product_show').width();
 		self.onready = function() {
-				var timer;
-				var flaf_hover=0;
+			var timer;
+			var flaf_hover=0;
 
 
 			// select small image for show in show-product
-			$('.goods-frame__item-sml').live("click",function(){
+			$('.goods-frame__item-sml').live("hover",function(){
 				$('.goods-frame__item-sml.active').removeClass('active');
 				$(this).addClass('active');
 				var src = $(this).find('.goods-frame__image-sml').attr('src');
@@ -38,35 +38,66 @@
 					$('.tabs-goods__item').removeClass('active');
 					$(this).addClass('active');
 					$('.tabs-goods__panel').removeClass('active').hide();
-					$('#'+panel_id+'').addClass('active').show();
+					$('#' + panel_id).addClass('active').show();
 				}
 			});
 
 			//change value of product after loading page
 			//change type of product and show prices of all products in basket
 			function changeValue() {
-				if($("#basket__page").length != 0){
-					var product_price_tr = $(".cart-table_custom_line");
-					var price_for_all_orders = 0;
+				if($("#basket-replace").length != 0){
+					var cartTotal = 0;
+
 					//first part
-					product_price_tr.each(function(key, e){
-						var product_price_span = $(e).find('.multiply-price');
-						var quant = $(e).find('input[name=quantity]').val();
-						product_price_span.each(function(key, item){
-							var static_price = $(item).attr('data-price');
-							if ($(item).text() != '') {
-								$(item).text(static_price * quant);
-							}
-						});
-						//second part
-						var price_without_sale = parseInt($(e).find('.current_price').text());
-						price_for_all_orders += price_without_sale;
+					$('.cart-item').each(function(){
+						var quant = $(this).find('input[name=quantity]').val();
+						cartTotal += quant * $(this).attr('data-current-box-price');
 					});
-					$('.all-orders-prices-sum').text(price_for_all_orders);
+					
+					//second part
+					if(cartTotal <= 20000){
+						price_type = 'Белая';
+						percent = 1;
+					}else if(cartTotal <= 80000){
+						price_type = 'Зелёная';
+						percent = 0.95;
+
+					}else if(cartTotal <= 200000){
+						price_type = 'Синяя';
+						percent = 0.93;
+					}else if (cartTotal >= 200000){
+						price_type = 'Красная';
+						percent = 0.9;
+					}
+					
+					$(".cart-item").each(function(key, e){
+						var productSumItem = $(e).find('.multiply-price');
+						var quant = $(e).find('input[name=quantity]').val();
+						//without discount price
+						var price = $(e).attr('data-current-price');
+						var boxPrice = $(e).attr('data-current-box-price');
+
+						$(e).find('.box-price').find('.price__value').text(parseInt(boxPrice * percent));
+						$(e).find('.current-price').find('.price__value').text(parseInt(price * percent));
+						$(e).find('.product-sum').find('.price__value').text(parseInt(boxPrice * percent * quant));
+						var economy = boxPrice * quant - boxPrice * quant * percent;
+						$(e).find('.prod-economy span').text(parseInt(economy)).show();
+						if(percent != 1){
+							$(e).find('.box-price-old').find('.price__value').text(boxPrice);
+							$(e).find('.old-price').find('.price__value').text(price);
+							$(e).find('.product-sum-old').find('.price__value').text(boxPrice * quant);
+						}else{
+							$('.price_old').find('.price__value').text('');
+							$(e).find('.prod-economy').hide();
+						}
+					});
+					$('.all-orders-prices-sum, .bulk-total').text(cartTotal * percent);
+					$('.cart-total').text(cartTotal);
+					$('.economy-value').text(cartTotal - cartTotal * percent);
+					
+					$('.price-type').text(price_type);
 				}
-
 			}
-
 
 			//add or subtract quantity of product
 			$('a.put__arrow').live("click",function(){
@@ -81,17 +112,6 @@
 				}
 				quantityInput.val(quantity);
 
-				if($(this).hasClass("put__arrow_basket")){
-					var product_price = $(this).parents(".cart-table__tr").find(".multiply-price");
-					var quant = $(this).parent().find('input[name=quantity]').val();
-					product_price.each(function(){
-						var static_price = $(this).attr('data-price');
-						var	p = static_price*quant;
-						if(p!=0){
-							$(this).text(p);
-						}
-					})
-				}
 				return changeValue();
 			});
 
@@ -145,7 +165,6 @@
                         }
                     }
                     self.run('add-to-cart', {'product': product.attr('data-prod-id'),'quantity': quantity}, function(answer) {
-                        console.log(answer);
                         if(answer.success) {
                             $('.header-basket').html(answer.html);
                             $('.l-goods-i__incart_basket_cnt').html(answer.quantity + ' кор.');

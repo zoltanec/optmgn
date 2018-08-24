@@ -5,7 +5,7 @@ class Store_Product extends D_Core_Object {
 	use Core_I18n_Localizeable;
 	use Core_LogAble;
 
-    static $cacheself = 200;
+    static $cacheself = 0;
     //Идентификатор продукта
     public $prod_id = 0;
     //Артикул продукта
@@ -59,23 +59,35 @@ class Store_Product extends D_Core_Object {
     }
 	
     /*Get Price without sale*/
-	function getDefPrice() {
-		if(isset($this->fields['wholesale-price']) && $this->fields['wholesale-price']->content) {
-			$current_price=$this->fields['wholesale-price']->content;
-		}else{
-			$current_price=$this->price;
+	public function getDefPrice() {
+		if(isset($this->fields['wholesale-discount-price'])) {
+			if(isset($this->fields['wholesale-price']) && $this->fields['wholesale-price']->content) {
+				$defPrice = $this->fields['wholesale-price']->content;
+			}else{
+				$defPrice = $this->price;
+			}
+			return $defPrice;
 		}
-        return $current_price;
+        return false;
     }
+	
     /*Get Price with sale*/
-	function getCurrentPrice() {
+	public function getCurrentPrice() {
 		if(isset($this->fields['wholesale-discount-price']) && $this->fields['wholesale-discount-price']->content) {
-			$current_price=$this->fields['wholesale-discount-price']->content;
-		}else{
-			$current_price=$this->price;
+			$currentPrice=$this->fields['wholesale-discount-price']->content;
+		} elseif (isset($this->fields['wholesale-price']) && $this->fields['wholesale-price']->content) {
+			$currentPrice=$this->fields['wholesale-price']->content;
+		} else {
+			$currentPrice = $this->price;
 		}
-		return $current_price;
+		return $currentPrice;
     }
+	
+	/*Get price with discount*/
+	public function getBulkDiscountPrice() {
+		$cart = Store_Cart::getBulkDiscount();
+		return $this->getCurrentPrice() * $cart['cff'];
+	}
     
     /*Количество в одной коробке*/
     public function getBoxQt() {

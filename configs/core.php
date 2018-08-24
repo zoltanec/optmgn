@@ -1,10 +1,10 @@
 <?php
-$cfg['dcmspath'] = '/home/www/kuksha/www.sportLand.ru/public_html/dcms';
+$cfg['dcmspath'] = '/home/www/kuksha/www.sportlopt.ru/public_html/dcms';
 $cfg['path'] = dirname(dirname(__FILE__));
 $cfg['default_module'] = 'static';
 $cfg['debug'] = true;
 $cfg['sys.core.allow_actions_override'] = true;
-$cfg['databases'] = array('db'=> array('user' => 'sportLand',
+$cfg['databases'] = array('db' => array('user' => 'sportLand',
                                    'password' => 'stockwearAndry',
                                        'name' => 'sportLandStock_ru',
                                      'prefix' => 'sh'));
@@ -13,28 +13,31 @@ $cfg['site_name'] = "sportLand";
 $cfg['admin_auth_mode'] = "config";
 $cfg['admin.users'] = array('user' => md5('gfhjkm'));
 $cfg['store.notify_admin_number'] = '89128053535';
-$cfg['notify.sms.smsru_key'] = '561C754B-B46B-41B4-C878-1F6EAEFA413A';
+$cfg['notify.sms.smsru_key']  = '561C754B-B46B-41B4-C878-1F6EAEFA413A';
 $cfg['notify.sms.smsru_from'] = '79615785433';
-$cfg['store.notify_admin']=true;
-$cfg['store.notify_admin_type']='sms';
+$cfg['store.notify_admin'] = true;
+$cfg['store.notify_admin_type'] = 'sms';
 $cfg['store.orders.minimum_amount'] = 300;
 $cfg['store.delivery.self_discount'] = 5;
 $cfg['store.statuses']  = ['Ожидает оплаты', 'Оплачен', 'Доставка', 'Завершен'];
 $cfg['store.discounts'] = [
-    '20 000'  => [
-        'class'  => 'green',
+    '20 000' => [
+		'bound' => 20000,
+        'class' => 'green',
         'title' => 'Зелёная',
-        'value' => 0.95,
+        'cff'   => 0.95,
     ],
-    '80 000'  => [
-        'class'  => 'blue',
+    '80 000' => [
+		'bound' => 80000,
+        'class' => 'blue',
         'title' => 'Синяя',
-        'value' => 0.93,
+        'cff'   => 0.93,
     ],
     '200 000' => [
-        'class'  => 'red',
+		'bound' => 200000,
+        'class' => 'red',
         'title' => 'Красная',
-        'value' => 0.9,
+        'cff'   => 0.9,
     ],
 ];
 

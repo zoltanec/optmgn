@@ -16,7 +16,7 @@ class Store_Cart extends D_Core_Object implements Payments_Payable {
 	//Пользователь
 	public $order_address;
 	public $description = '';
-	static $cacheself = 60;
+	static $cacheself = 0;
 	public $uid = 0;
 	public $delivery = 0;
 	public $payment = 0;
@@ -33,7 +33,7 @@ class Store_Cart extends D_Core_Object implements Payments_Payable {
 	}
 
 	static protected function __fields() {
-		return ['order_phone', 'order_name', 'order_address', 'add_time', 'upd_time', 'uid', 'description', 'status', 'code', 'payment', 'delivery', 'delivery_payment', 'discount'];
+		return ['domain', 'order_phone', 'order_name', 'order_address', 'add_time', 'upd_time', 'uid', 'description', 'status', 'code', 'payment', 'delivery', 'delivery_payment', 'discount'];
 	}
 
 	protected function __new() {
@@ -52,7 +52,6 @@ class Store_Cart extends D_Core_Object implements Payments_Payable {
 			$this->save();
 		}
 	}
-
 
 	public function setOrderStatus($new_status) {
 		if($new_status == 1) {
@@ -140,7 +139,13 @@ class Store_Cart extends D_Core_Object implements Payments_Payable {
 		$sum = 0;
 		foreach($this->getOrderPacks() AS $pack) {
 			foreach($pack AS $product) {
-				$sum += $product->price * $product->quantity;
+				if($product->getBoxQt()){
+					//@method getBoxQt - количество пар в коробке
+					$sum += $product->price * $product->quantity * $product->getBoxQt();
+				} else {
+					$sum += $product->price * $product->quantity;
+				}
+				
 			}
 		}
 		return $sum;
@@ -284,34 +289,30 @@ class Store_Cart extends D_Core_Object implements Payments_Payable {
     }
 
 	//!get price of all orders and show the color
-	static function getColor(){
-		$prod = Store_Cart::getCart();
-		$price = 0;
-		$typeOfOrders = array();
-		foreach($prod as $product){
-			foreach($product as $data){
-				$quality = $data['quantity'];
-				$price += D_Core_Factory::Store_Product($data['prod_id'])->getCurrentPrice()* D_Core_Factory::Store_Product($data['prod_id'])->getBoxQt()*$quality;
-			}
+	static function getBulkDiscount() {
+		$cartSum   = static::getCartSum();
+		$cartTotal = $cartSum['total_cost'];
+		$discounts = D::$config->{'store.discounts'};
+		
+		if ($cartTotal < 20000) {
+			$bulkDiscount = [
+				'title' => 'Белая',
+				'total' => $cartTotal,
+				'cff'   => 1,
+			];
+			return $bulkDiscount;
+		}
 
+		foreach(array_reverse($discounts) as $priceBound => $discountSettings) {
+			if ($cartTotal > $discountSettings['bound']) {
+				$bulkDiscount = array_merge([
+					'total' => $cartTotal * $discountSettings['cff'],
+				], $discountSettings);
+				break;
+			}
 		}
-		if($price < 20000){
-			$typeOfOrders['color'] = 'Белая';
-			$typeOfOrders['price'] = $price;
-			return $typeOfOrders;
-		}else if($price < 80000){
-			$typeOfOrders['color'] = 'Зелёная';
-			$typeOfOrders['price'] = $price*0.95;
-			return $typeOfOrders;
-		}else if($price <200000){
-			$typeOfOrders['color'] = 'Синяя';
-			$typeOfOrders['price'] = $price*0.93;
-			return $typeOfOrders;
-		}else{
-			$typeOfOrders['color'] = 'Красная';
-			$typeOfOrders['price'] = $price*0.9;
-			return $typeOfOrders;
-		}
+
+		return $bulkDiscount;
 	}
 
     //!Получить сумму стоимости продуктов в пакете
@@ -339,23 +340,23 @@ class Store_Cart extends D_Core_Object implements Payments_Payable {
     //!Получить сумму стоимости продуктов в корзине
     static function getCartSum() {
     		$cart = self::getCart();
-    		$total_cost=0;
-    		$total_quantity=0;
+    		$total_cost = $total_quantity = 0;
+
     		if($cart) {
 	    		foreach($cart as $pack) {
-		    			foreach($pack as $hash => $data) {
-		    				$prod = D_Core_Factory::Store_Product($data['prod_id']);
-                            if($prod->getBoxQt()){
-                                //В данном случае $data['quantity'] - это количество коробок
-                                //.getBoxQt - количество пар в коробке
-                                $total_cost += $prod->current_price * $data['quantity'] * $prod->getBoxQt();
-                            } else {
-                                $total_cost += $prod->current_price * $data['quantity'];
-                            }
-		    				$total_quantity +=$data['quantity'];
-		    			}
+					foreach($pack as $hash => $data) {
+						$prod = D_Core_Factory::Store_Product($data['prod_id']);
+						if($prod->getBoxQt()){
+							//В данном случае $data['quantity'] - это количество коробок
+							//@method getBoxQt - количество пар в коробке
+							$total_cost += $prod->getCurrentPrice() * $data['quantity'] * $prod->getBoxQt();
+						} else {
+							$total_cost += $prod->getCurrentPrice() * $data['quantity'];
+						}
+						$total_quantity +=$data['quantity'];
+					}
 	    		}
-	    		return array('total_cost' => $total_cost, 'total_quantity' => $total_quantity);
+	    		return ['total_cost' => $total_cost, 'total_quantity' => $total_quantity];
     		} else return false;
     }
 
@@ -383,7 +384,5 @@ class Store_Cart extends D_Core_Object implements Payments_Payable {
 	static function getLastOrders($status = 0) {
 		return self::find(['status' => $status, 'upd_time' => ['>=', time() - 86400 ]],['order' => 'upd_time DESC']);
 	}
-
-
 }
 ?>
