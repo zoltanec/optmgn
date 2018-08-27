@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty3-RC3, created on 2018-08-08 17:41:51
+<?php /* Smarty version Smarty3-RC3, created on 2018-08-27 21:49:01
          compiled from "dit:store;category" */ ?>
 <?php /*%%SmartyHeaderCode:455650775b6ae50f7471d4-61375334%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '25447fa1576ee58f0c690ed0fbd18a899b5e5ad3' => 
     array (
       0 => 'dit:store;category',
-      1 => 1533361472,
+      1 => 1535388466,
     ),
   ),
   'nocache_hash' => '455650775b6ae50f7471d4-61375334',
@@ -16,6 +16,7 @@ $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 )); /*/%%SmartyHeaderCode%%*/?>
+<input type="hidden" id="category_page">
 <div class="container l-goods-l">
 	<div class="row l-goods-l__header">
 		<div class="col-item"><h1 class="title-h1">Мужские кроссовки</h1></div>
@@ -137,7 +138,7 @@ if (count($_from) > 0){
 											<img class="goods-card__img" 
 												src="http://sportlandshop.ru/content/media/thumbs/product<?php echo $_smarty_tpl->getVariable('prod')->value->prod_id;?>
 /<?php echo $_smarty_tpl->getVariable('prod')->value->picture->fileid;?>
-" 
+"
 												alt="<?php echo $_smarty_tpl->getVariable('prod')->value->prod_name;?>
 " >
 											<div class="goods-labels goods-card__labels">
@@ -158,35 +159,28 @@ if (count($_from) > 0){
 										</div>
 										<div class="goods-card__name"><?php echo $_smarty_tpl->getVariable('prod')->value->prod_name;?>
 </div>
-										<?php if ($_smarty_tpl->getVariable('prod')->value->fields['wholesale-discount-price']->content){?>
-											<div class="goods-card__price price">
-											от <span class="price__value" id=""><?php echo $_smarty_tpl->getVariable('prod')->value->getCurrentPrice()?>
+										<div class="goods-card__price price">
+											от <span class="price__value"><?php echo $_smarty_tpl->getVariable('prod')->value->getCurrentPrice();?>
 </span> руб./шт</div>
-                                            <div class="goods-card__price_old price price_old">
-											от <span class="price__value" id=""></span><?php echo $_smarty_tpl->getVariable('prod')->value->getDefPrice()?>
- руб./шт</div>
-										<?php }else{ ?>
-											<div class="goods-card__price price">
-											от <span class="price__value" id=""><?php echo $_smarty_tpl->getVariable('prod')->value->getCurrentPrice();?>
-</span> руб./шт</div>
-										<?php }?>
+											<?php if ($_smarty_tpl->getVariable('prod')->value->getDefPrice()){?>
+												<div class="goods-card__price_old price price_old">
+													от <span class="price__value"><?php echo $_smarty_tpl->getVariable('prod')->value->getDefPrice();?>
+</span> руб./шт
+												</div>
+											<?php }?>
                                         <div class="goods-card__wholesale">
                                             оптом по
                                             <span class="goods-card__wholesale-value"><?php echo $_smarty_tpl->getVariable('prod')->value->getBoxQt();?>
 </span> шт.
-                                            <?php if ($_smarty_tpl->getVariable('prod')->value->fields['wholesale-discount-price']->content){?>
-                                                <div class="goods-card__wholesale-price price">от
-                                                    <span class="price__value" id=""><?php echo 10*$_smarty_tpl->getVariable('prod')->value->fields['wholesale-price']->content;?>
+											<div class="goods-card__wholesale-price price">от
+												<span class="price__value" id=""><?php echo $_smarty_tpl->getVariable('prod')->value->getBoxQt()*$_smarty_tpl->getVariable('prod')->value->getCurrentPrice();?>
 </span> руб./уп.
-                                                </div>
-                                                <div class="goods-card__wholesale_old price price_old">от
-                                                    <span class="price__value" id=""><?php echo 10*$_smarty_tpl->getVariable('prod')->value->fields['wholesale-price']->content;?>
+											</div>
+											<?php if ($_smarty_tpl->getVariable('prod')->value->getDefPrice()){?>
+												<div class="goods-card__wholesale_old price price_old">от
+													<span class="price__value" id=""><?php echo $_smarty_tpl->getVariable('prod')->value->getBoxQt()*$_smarty_tpl->getVariable('prod')->value->getDefPrice();?>
 </span> руб./уп.
-                                                </div>
-                                            <?php }else{ ?>
-                                                <div class="goods-card__price price">
-                                                от <span class="price__value" id=""><?php echo 10*$_smarty_tpl->getVariable('prod')->value->fields['wholesale-price']->content;?>
-</span> руб./шт</div>
+												</div>
                                             <?php }?>
                                         </div>
 									</a>
@@ -212,9 +206,9 @@ if (count($_from) > 0){
                                                         to-cart">В корзину</div>
                                                 </div>
                                             </div>
-                                            <a class="btn btn_primary btn_size_xs put__btn_in_basket" style="display:none" href="<?php echo $_smarty_tpl->getVariable('me')->value['www'];?>
-/store/order" rel="nofollow"><i class="icon icon-check"></i>В корзине</a>
+                                            <a class="btn btn_primary btn_size_xs put__btn_in_basket" style="display:none" href=",http://sportlandshop.ru/store/order" rel="nofollow"><i class="icon icon-check"></i>В корзине</a>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -247,6 +241,88 @@ if (count($_from) > 0){
 							<a class="arrow arrow_next arrow_navi" href="/catalog/shoes/adult/men/krossovki/?PAGEN_1=3"></a>
 						</div>
 					</div>
+				<div class="row">
+					<div class="col-md-6">
+						<h4 class="slider-title">Хиты продаж</h4>
+					</div>
+					<div class="col-md-6">
+						<div class="arrow-div">
+							<a class="arrow arrow_prev arrow_navi slider slider-prev"></a>
+							<a class="arrow arrow_next arrow_navi slider slider-next"></a>
+						</div>
+					</div>
+				</div>
+				<div class="row slider-div">
+					<div class="col-item" data-entity="parent-container">
+						<div class="goods-list ga_container" data-entity="container-1" data-list_name="CATALOG_SECTION">
+							<?php  $_smarty_tpl->tpl_vars['prod'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('hit')->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if (count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['prod']->key => $_smarty_tpl->tpl_vars['prod']->value){
+?>
+								<div class="goods-list__item goods-card ga_item item-hit" data-entity="items-row">
+									<a class="goods-card__link"
+									   href="<?php echo $_smarty_tpl->getVariable('me')->value['www'];?>
+/store/show-product/product_<?php echo $_smarty_tpl->getVariable('prod')->value->prod_id;?>
+"
+									   title="<?php echo $_smarty_tpl->getVariable('prod')->value->prod_name;?>
+"
+									   data-entity="image-wrapper">
+										<div class="goods-card__img-wrap">
+											<img class="goods-card__img"
+												 src="http://sportlandshop.ru/content/media/thumbs/product<?php echo $_smarty_tpl->getVariable('prod')->value->prod_id;?>
+/<?php echo $_smarty_tpl->getVariable('prod')->value->picture->fileid;?>
+"
+												 alt="<?php echo $_smarty_tpl->getVariable('prod')->value->prod_name;?>
+" >
+											<div class="goods-labels goods-card__labels">
+												<div class="goods-labels__list">
+													<?php if ($_smarty_tpl->getVariable('prod')->value->fields['new']->content){?><div class="icon goods-labels__item goods-label goods-label_new" title="Новинки"></div><?php }?>
+													<?php if ($_smarty_tpl->getVariable('prod')->value->fields['wholesale-discount-price']->content){?><div class="icon goods-labels__item goods-label goods-label_stock-persent">Sale</div><?php }?>
+												</div>
+											</div>
+										</div>
+										<div class="goods-card__brand">
+											<?php if ($_smarty_tpl->getVariable('prod')->value->fields['brand']->content){?>
+											<?php echo $_smarty_tpl->getVariable('prod')->value->fields['brand']->content;?>
+
+											<?php }else{ ?>
+											<?php echo preg_replace("#(.*?)\s.*#","$"."1",$_smarty_tpl->getVariable('prod')->value->prod_name);?>
+
+											<?php }?>
+										</div>
+										<div class="goods-card__name"><?php echo $_smarty_tpl->getVariable('prod')->value->prod_name;?>
+</div>
+										<div class="goods-card__price price">
+											от <span class="price__value"><?php echo $_smarty_tpl->getVariable('prod')->value->getCurrentPrice();?>
+</span> руб./шт</div>
+										<?php if ($_smarty_tpl->getVariable('prod')->value->getDefPrice()){?>
+										<div class="goods-card__price_old price price_old">
+											от <span class="price__value"><?php echo $_smarty_tpl->getVariable('prod')->value->getDefPrice();?>
+</span> руб./шт
+										</div>
+										<?php }?>
+										<div class="goods-card__wholesale">
+											оптом по
+											<span class="goods-card__wholesale-value"><?php echo $_smarty_tpl->getVariable('prod')->value->getBoxQt();?>
+</span> шт.
+											<div class="goods-card__wholesale-price price">от
+												<span class="price__value" id=""><?php echo $_smarty_tpl->getVariable('prod')->value->getBoxQt()*$_smarty_tpl->getVariable('prod')->value->getCurrentPrice();?>
+</span> руб./уп.
+											</div>
+											<?php if ($_smarty_tpl->getVariable('prod')->value->getDefPrice()){?>
+											<div class="goods-card__wholesale_old price price_old">от
+												<span class="price__value" id=""><?php echo $_smarty_tpl->getVariable('prod')->value->getBoxQt()*$_smarty_tpl->getVariable('prod')->value->getDefPrice();?>
+</span> руб./уп.
+											</div>
+											<?php }?>
+										</div>
+									</a>
+								</div>
+							<?php }} ?>
+						</div>
+					</div>
+				</div>
 				</div>
 			</div>
 
@@ -265,4 +341,8 @@ if (count($_from) > 0){
 			</div>
 		</div>
 	</div>
+
+
+
+
 </div>

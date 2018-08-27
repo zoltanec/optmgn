@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty3-RC3, created on 2018-08-08 15:05:52
+<?php /* Smarty version Smarty3-RC3, created on 2018-08-27 21:49:03
          compiled from "dit:/home/www/kuksha/www.sportlopt.ru/public_html/themes/default/theme.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3068181375b6ac080be2e56-19148453%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_smarty_tpl->decodeProperties(array (
     '10de9cab127449c4e6eb9f6f111ac2bde546ef4f' => 
     array (
       0 => 'dit:/home/www/kuksha/www.sportlopt.ru/public_html/themes/default/theme.tpl',
-      1 => 1531398208,
+      1 => 1535388466,
     ),
   ),
   'nocache_hash' => '3068181375b6ac080be2e56-19148453',
@@ -100,20 +100,8 @@ $_smarty_tpl->decodeProperties(array (
             <div class="contacts__bottom">
                 <span class="contacts__timeRange">с 9:00 до 18:00</span>
             </div>
-
-			<div class="col-item header-basket">
-				<a class="header-basket__frame" href="<?php echo $_smarty_tpl->getVariable('me')->value['www'];?>
-/store/order">
-					<span class="header-basket__baloon"><b>Для вашего региона:</b> <br><b>Минимальный заказ</b> - 10 000 руб. <br>Бесплатная доставка от 50 000 руб.</span>
-					<span class="header-basket__cart">
-						<span class="header-basket__length"></span>
-					</span>
-					<span class="header-basket__info">
-						<span class="header-basket__text">Корзина</span>
-						<span class="header-basket__value">пуста</span>
-					</span>
-				</a>
-			</div>
+			<?php $_template = new Smarty_Internal_Template('store;cart-widget', $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
+ echo $_template->getRenderedTemplate();?><?php $_template->updateParentVariables(0);?><?php unset($_template);?>
 		</div>
     </header>
 
