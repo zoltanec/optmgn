@@ -100,11 +100,7 @@ $_smarty_tpl->decodeProperties(array (
             <div class="contacts__bottom">
                 <span class="contacts__timeRange">с 9:00 до 18:00</span>
             </div>
-			<form action="/catalog/" id="title-search" class="col-item header-search" >
-				<input class="header-search__input input-text" id="title-search-input" type="text" name="q" value="" size="40" maxlength="50" autocomplete="off" placeholder="Поиск по сайту" />
-				<button class="header-search__button icon icon-zoom" type="submit"></button>
-				<input type="hidden" value="Поиск" class="button icon" />
-			</form>
+
 			<div class="col-item header-basket">
 				<a class="header-basket__frame" href="<?php echo $_smarty_tpl->getVariable('me')->value['www'];?>
 /store/order">

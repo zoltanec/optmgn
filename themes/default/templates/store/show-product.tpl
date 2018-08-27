@@ -183,7 +183,7 @@
 			<!--/noindex-->
 		</div>
 		<div class="col-item l-goods-i__details l-goods-i__details_right">
-			<div class="clearfix addBookmark text-center"><a class="link" rel="sidebar">Добавить в закладки</a></div>
+			<div class="clearfix addBookmark text-center"><a rel="sidebar">Добавить в закладки</a></div>
 			<div class="l-goods-i__block hidden">
 				<div class="rrc">
 					<div class="rrc__col rrc__title">РРЦ</div>

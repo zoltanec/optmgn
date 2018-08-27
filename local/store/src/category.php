@@ -1,6 +1,9 @@
 <?php
 $search = D::$req->textLine('search');
 $search_cond = [];
+$hit = [];
+$new = [];
+$sale = [];
 
 $category_code = D::$req->textLine('param1');
 $T['category'] = D_Core_Factory::Store_Category($category_code);
@@ -72,11 +75,11 @@ D::$tpl->description = $T['category']->descr;
 if($T['category']->custom_tpl) D::$tpl->show('categories/'.$T['category']->category_code);
 
 foreach($T['products'] as $prod){
-    if(isset($prod->fields['wholesale-hit']->content)){
+    if(isset($prod->fields['wholesale-hit']) && $prod->fields['wholesale-hit']->content){
         $hit[] = $prod;
-    }else if(isset($prod->fields['wholesale-new']->content)){
+    }else if(isset($prod->fields['wholesale-new']) && $prod->fields['wholesale-new']->content){
         $new[] = $prod;
-    }else if(isset($prod->fields['wholesale-sale'])){
+    }else if(isset($prod->fields['wholesale-sale']) && $prod->fields['wholesale-sale']->content){
         $sale[] = $prod;
     }
 }

@@ -1,7 +1,7 @@
 (function(D) {
 	D.register('store', new function() {
 		var self = this;
-
+		var slider_hit = 0;
 		self.last_prod_id = 0;
 		self.last_wheel_time = 0;
 		self.wheel_delay = 200;
@@ -100,7 +100,7 @@
 			}
 
 			//add or subtract quantity of product
-			$('a.put__arrow').live("click",function(){
+			$('a.put__arrow').live("click",function() {
 				var quantityInput = $(this).parents('.put__counter').find('input[name=quantity]');
 				var quantity = quantityInput.val();
 				if($(this).hasClass('put__arrow_minus')) {
@@ -112,7 +112,7 @@
 				}
 				quantityInput.val(quantity);
 
-				if($(this).hasClass("put__arrow_basket")){
+				if($(this).hasClass("put__arrow_basket")) {
 					var product_price = $(this).parents(".cart-table__tr").find(".multiply-price");
 					var quant = $(this).parent().find('input[name=quantity]').val();
 					product_price.each(function(){
@@ -128,13 +128,62 @@
 			});
 
 			//delete a product
-			$('.cart-table__close').live("click",function(){
+			$('.cart-table__close').live("click",function() {
 				$(this).parent().parent().remove();
 			})
 
 			$('.remove_all_basket').live("click",function(){
 				$('.cart-table').find('.cart-table_custom_line').remove();
 			})
+
+			//slider hit new sale
+			function slider() {
+				$('.item-hit').each(function(key, item) {
+					slider_hit++;
+					if(slider_hit <= 4){
+						$(item).show();
+					}
+					if(slider_hit == 4){
+						return false;
+					}
+				})
+			}
+			slider();
+
+			//slider next and prev
+				$(".slider").live("click",function() {
+					var product = $('.item-hit');
+					var length = product.length;
+					if ($(this).hasClass("slider-next")) {
+						if(slider_hit == Math.ceil(length/4) * 4){
+							slider_hit = 0;
+						}
+						product.hide();
+						product.slice(slider_hit, slider_hit+4).show();
+						slider_hit = slider_hit+4;
+
+					}else{
+						if(slider_hit == 4){
+							slider_hit = Math.ceil(length/4) * 4 + 4;
+						}
+						product.hide();
+						product.slice(slider_hit - 8, slider_hit - 4).show();
+						slider_hit = slider_hit - 4;
+
+
+					}
+				});
+
+			//add bookmark
+			$(".addBookmark").live("click",function(){
+				$(this).html('Нажмите «Ctrl + D» для добавления страницы в закладки');
+				$(document).keydown(function(e) {
+					if (e.keyCode == 68 && e.ctrlKey) {
+						$(".addBookmark").html('<a rel="sidebar">Добавить в закладки</a>');
+					}
+				});
+			})
+
 
 
 
