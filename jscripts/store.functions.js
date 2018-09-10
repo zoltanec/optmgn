@@ -1,24 +1,12 @@
 (function(D) {
 	D.register('store', new function() {
 		var self = this;
-		var slider_hit = 0;
-		self.last_prod_id = 0;
-		self.last_wheel_time = 0;
-		self.wheel_delay = 200;
-		self.list = new D.ObjectsList();
-		self.self_delivery_coef = 0.95;
-		self.exclick_locker = false;
-		self.mode = 'default';
-		self.default_name = '';
-		self.default_phone = '';
-		self.minimum_amount = 200;
-		self.map_started = false;
 
 		self.shift=$('div.product_show').width();
+		
 		self.onready = function() {
 			var timer;
 			var flaf_hover=0;
-
 
 			// select small image for show in show-product
 			$('.goods-frame__item-sml').live("hover",function(){
@@ -117,14 +105,14 @@
 					var quant = $(this).parent().find('input[name=quantity]').val();
 					product_price.each(function(){
 						var static_price = $(this).attr('data-price');
-						var	p = static_price*quant;
-						if(p!=0){
+						var	p = static_price * quant;
+						if(p != 0){
 							$(this).text(p);
 						}
 					});
 					return changeValue();
 				}
-
+				return false;
 			});
 
 			//delete a product
@@ -137,40 +125,61 @@
 			})
 
 			//slider hit new sale
-			function slider() {
-				$('.item-hit').each(function(key, item) {
-					slider_hit++;
-					if(slider_hit <= 4){
+			function slider(item) {
+				var itemCount = 0;
+				var itemsLength = $(item).find('.item-hit').length;
+				
+				if($(item).find('.item-hit').length <= 4) {
+					$(item).find('.slider-nav').hide();
+				}
+				
+				$(item).find('.item-hit').each(function(key, item) {
+					if(itemCount < 4){
 						$(item).show();
-					}
-					if(slider_hit == 4){
+					} else {
 						return false;
 					}
+					itemCount++;
 				})
 			}
-			slider();
+			$('.slider-wrap').each(function(key, item) {
+				slider(item);
+			});
 
 			//slider next and prev
-				$(".slider").live("click",function() {
-					var product = $('.item-hit');
-					var length = product.length;
-					if ($(this).hasClass("slider-next")) {
-						if(slider_hit == Math.ceil(length/4) * 4){
-							slider_hit = 0;
-						}
-						product.hide();
-						product.slice(slider_hit, slider_hit+4).show();
-						slider_hit = slider_hit+4;
-
-					}else{
-						if(slider_hit == 4){
-							slider_hit = Math.ceil(length/4) * 4 + 4;
-						}
-						product.hide();
-						product.slice(slider_hit - 8, slider_hit - 4).show();
-						slider_hit = slider_hit - 4;
+			$(".slider").live("click",function() {
+				console.log('init');
+				var thisButton = $(this);
+				var product = thisButton.parents('.slider-wrap').find('.item-hit');
+				var itemsLength  = product.length;
+				var currentPosition = parseInt(thisButton.parents('.slider-wrap').attr('data-position'));
+				console.log(currentPosition);
+				if(!currentPosition) {
+					currentPosition = 0;
+				}
+				console.log(currentPosition);
+				
+				if ($(this).hasClass("slider-next")) {
+					sliderPosition = currentPosition + 4;
+					console.log(sliderPosition + '/' + Math.ceil(itemsLength / 4) * 4);
+					if(sliderPosition >= Math.ceil(itemsLength / 4) * 4){
+						sliderPosition = 0;
 					}
-				});
+					product.hide();
+					product.slice(sliderPosition, sliderPosition + 4).show();
+
+				}else{
+					sliderPosition = currentPosition - 4;
+					console.log(sliderPosition + '/' + (Math.ceil(itemsLength / 4) * 4));
+					if(sliderPosition <= 0){
+						sliderPosition = Math.ceil(itemsLength / 4) * 4;
+					}
+					product.hide();
+					product.slice(sliderPosition - 4, sliderPosition).show();
+				}
+				thisButton.parents('.slider-wrap').attr('data-position', sliderPosition);
+			});
+				
 			$('.paginator a').on("click", function(){
 				alert();
 				var page = parseInt($(this).attr('data-page'));
@@ -201,6 +210,7 @@
 					});
 				}
 			});
+			
 			//add bookmark
 			$(".addBookmark").live("click",function(){
 				$(this).html('Нажмите «Ctrl + D» для добавления страницы в закладки');
