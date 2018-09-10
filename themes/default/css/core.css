@@ -26116,5 +26116,46 @@ form#profile_data_edit_form .segment {
 }
 .slider-title {
 	color:black;
-	font-style: bold;
+}
+
+.bl-tabs-menu--wrapper .bl-menu__tabs a.active {
+	color: #fff;
+	background-color: #969696;
+}
+
+.bl-tabs-menu--wrapper .bl-menu__tabs a:not(.active):hover {
+	background-color: #eee;
+}
+
+.paginator span {
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	background: #c0c0c0;
+	border-radius: 30px;
+	box-sizing: border-box;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	line-height: 30px;
+}
+
+.paginator {
+	clear: both;
+	padding: 12px 0;
+	overflow: auto;
+	border-top: 1px solid #9e9c9c;
+}
+.paginator div.pag-wrapper {
+	margin: 0 auto;
+	text-align: center;
+	max-width: 1380px;
+	position: relative;
+}
+
+.paginator a {
+	color: #333;
+	text-align: center;
+	text-decoration: none;
+	margin: 0 12px;
 }

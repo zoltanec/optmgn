@@ -27,7 +27,7 @@
 			<div class="topline-contacts contacts">
                 <div class="contacts__top">
                     <div class="contacts__phone contacts__phone_moscow">
-                        фывфыафы
+                        888999
                     </div>
                 </div>
                 <div class="contacts__bottom">
@@ -110,10 +110,6 @@
             <a class="menu-list__item " href="<{$me.www}>/store/category/accessories">Сумки и рюкзаки</a>
 			</div>
 		</div>
-	</div>
-
-	<div class="container">
-		<div class="row"></div>
 	</div>
 
 

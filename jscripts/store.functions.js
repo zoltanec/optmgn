@@ -169,11 +169,38 @@
 						product.hide();
 						product.slice(slider_hit - 8, slider_hit - 4).show();
 						slider_hit = slider_hit - 4;
-
-
 					}
 				});
+			$('.paginator a').on("click", function(){
+				alert();
+				var page = parseInt($(this).attr('data-page'));
+				$('form.bl-filter_form--element input[name=page]').attr('value',page);
+				$('form.bl-filter_form--element').submit();
+				return false;
+			});
 
+			$('.bl-sub_menu--wrapper a, .responsive-menu-categories a').each(function(){
+				var current = $('.bl-sub_menu--wrapper').attr('data-current');
+				if(current == '') {
+					return false;
+				}
+				var href = $(this).attr('href');
+				var preg = new RegExp(current);
+				if(preg.test(href)) {
+					$(this).addClass('active');
+					$(this).parent('div').addClass('active');
+					if($(this).parents('div.dropdown').length){
+						$(this).parents('div.dropdown').addClass('active');
+					}
+					$('.bl-sub_menu--wrapper').addClass('active');
+					var active = $(this).parent('div').attr('data-id');
+					$('.bl-main_menu-wrapper nav a').each(function(){
+						if($(this).attr('href') == '#' + active) {
+							$(this).parent('div').addClass('active');
+						}
+					});
+				}
+			});
 			//add bookmark
 			$(".addBookmark").live("click",function(){
 				$(this).html('Нажмите «Ctrl + D» для добавления страницы в закладки');

@@ -1,7 +1,7 @@
 <?php
 $cfg['dcmspath'] = '/home/www/kuksha/www.sportlopt.ru/public_html/dcms';
 $cfg['path'] = dirname(dirname(__FILE__));
-$cfg['default_module'] = 'static';
+$cfg['default_module'] = 'store';
 $cfg['debug'] = true;
 $cfg['sys.core.allow_actions_override'] = true;
 $cfg['databases'] = array('db' => array('user' => 'sportLand',

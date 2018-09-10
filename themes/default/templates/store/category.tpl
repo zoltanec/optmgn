@@ -1,13 +1,13 @@
 <input type="hidden" id="category_page">
 <div class="container l-goods-l">
 	<div class="row l-goods-l__header">
-		<div class="col-item"><h1 class="title-h1">Мужские кроссовки</h1></div>
+		<div class="col-item"><h1 class="title-h1"><{$category->category_name}></h1></div>
 	</div>
 
 	<div class="row l-goods-l__section">
 		<div class="col-item l-goods-l__filters">
 			<div class="collapse filters-wrap" id="filters">
-				<div class="urraa-loader urraa-loader-show"><div class="urraa-loader-curtain"></div></div>
+				Фильтр
 			</div>
 		</div>
 		<div class="col-item l-goods-l__goods ">
@@ -85,14 +85,14 @@
 				<div class="col-item">
 				</div>
 			</div>
-
+			<form action="" method="post" class="bl-filter_form--element -visor-no-click">
+				<input name="page" type="hidden" value="">
 			<div class="row">
 				<div class="col-item" data-entity="parent-container">
 					<div class="goods-list ga_container" data-entity="container-1" data-list_name="CATALOG_SECTION">
-						
 						<{if count($products)}>
 							<{foreach item=prod from=$products}>
-							<div class="goods-list__item goods-card ga_item" data-entity="items-row">
+							<div class="goods-list__item goods-card ga_item col-md-3" data-entity="items-row">
 								<div class="goods-card__frame product-item" 
                                     data-prod-id="<{$prod->prod_id}>"
                                     <{if $prod->fields['wholesale-discount-price']->content}>
@@ -173,6 +173,7 @@
                             </div>
 							<{/foreach}>
 						<{/if}>
+					</form>
 					</div>
 
 					<!-- items-container -->
@@ -183,23 +184,28 @@
 							</div>
 						</div>
 					</div>
-			
-					<div data-pagination-num="1">
-						<!-- pagination-container -->
-						<div class="pagi l-goods-l__pagi">
-							<a class="arrow arrow_prev arrow_navi" href="/catalog/shoes/adult/men/krossovki/?PAGEN_1=1"></a>
-							<ul class="pagi__list">
-								<li class="pagi__item"><a class="pagi__link" href="/catalog/shoes/adult/men/krossovki/" title="">1</a></li>
-								<li class="pagi__item"><span class="pagi__active" title="">2</span></li>
-								<li class="pagi__item"><a class="pagi__link" href="/catalog/shoes/adult/men/krossovki/?PAGEN_1=3" title="">3</a></li>
-								<li class="pagi__item"><a class="pagi__link" href="/catalog/shoes/adult/men/krossovki/?PAGEN_1=4" title="">4</a></li>
-								<li class="pagi__item"><span class="pagi__static">...</span></li>
-								<li class="pagi__item"><a class="pagi__link" href="/catalog/shoes/adult/men/krossovki/?PAGEN_1=42" title="">42</a></li>
-							</ul>
 
-							<a class="arrow arrow_next arrow_navi" href="/catalog/shoes/adult/men/krossovki/?PAGEN_1=3"></a>
-						</div>
+				<div class="paginator">
+					<div class="pag-wrapper">
+							<{if $current > ceil(5/2)}>
+							<a href="#1" data-page="1">1</a><i>...</i>
+							<{/if}>
+							<{foreach name=pager item=page from=$pager['pages']}>
+							<{if $page == $current}>
+							<span><{$page}></span>
+							<{else}>
+							<a href="#<{$page}>" data-page="<{$page}>"><{$page}></a>
+							<{/if}>
+							<{/foreach}>
+							<{if $current < $pager['total'] - 5}>
+							<i>...</i><a href="#<{$pager['total']}>" data-page="<{$pager['total']}>"><{$pager['total']}></a>
+							<{/if}>
+							<{if $current != $pager['total']}>
+							<a href="#<{$current + 1}>" data-page="<{$current + 1}>" class="link next">Дальше</a>
+							<{/if}>
+							<{*div class="show_all_good show_all_good--pag"><a href="/catalogue/obuv/muzhskaya?show=1&amp;showall=1">Показать весь товар</a></div*}>
 					</div>
+				</div>
 				<div class="row">
 					<div class="col-md-6">
 						<h4 class="slider-title">Хиты продаж</h4>

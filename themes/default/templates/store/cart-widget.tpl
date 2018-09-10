@@ -9,7 +9,6 @@
 
 			<span class="header-basket__text">Корзина</span>
 			<span class="header-basket__value"><{if $total.total_cost > 0}><{$total.total_cost}> руб.<{else}>пуста<{/if}></span>
-			<span class="header-basket__value"><{if count($cart[1])>0}><{count($cart[1])}><{else}>пуста<{/if}></span>
 		</span>
 	</a>
 </div>
